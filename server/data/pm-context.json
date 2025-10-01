@@ -1,0 +1,239 @@
+{
+  "books": {
+    "cracking-the-pm-interview": {
+      "title": "Cracking the PM Interview",
+      "authors": ["Gayle Laakmann McDowell", "Jackie Bavaro"],
+      "keyConcepts": {
+        "product-sense": {
+          "definition": "The ability to identify user problems and design solutions that address real needs",
+          "evaluationCriteria": [
+            "Can they identify the core user problem?",
+            "Do they understand user needs and use cases?",
+            "Can they design features that solve real problems?",
+            "Do they think about different user types and their specific needs?"
+          ]
+        },
+        "structured-thinking": {
+          "definition": "The ability to break down complex problems into manageable components",
+          "evaluationCriteria": [
+            "Do they ask clarifying questions before jumping to solutions?",
+            "Can they structure their approach systematically?",
+            "Do they identify users, use cases, and goals clearly?",
+            "Can they break down problems into smaller, manageable pieces?"
+          ]
+        },
+        "customer-focus": {
+          "definition": "Understanding that products should be designed for users, not personal preferences",
+          "evaluationCriteria": [
+            "Do they think about what users want vs. what they personally want?",
+            "Can they identify different user personas and their needs?",
+            "Do they consider use cases and user goals?",
+            "Are they realistic about tradeoffs and limitations?"
+          ]
+        },
+        "business-acumen": {
+          "definition": "Understanding the business context and making decisions that drive value",
+          "evaluationCriteria": [
+            "Do they consider business goals and metrics?",
+            "Can they balance user needs with business objectives?",
+            "Do they think about market size and opportunity?",
+            "Can they make data-driven decisions?"
+          ]
+        },
+        "leadership-without-authority": {
+          "definition": "The ability to influence and lead teams without direct authority",
+          "evaluationCriteria": [
+            "Do they show initiative and drive?",
+            "Can they influence others through vision and research?",
+            "Do they take ownership of outcomes?",
+            "Can they work collaboratively across teams?"
+          ]
+        }
+      },
+      "interviewFrameworks": {
+        "product-design": {
+          "name": "Product Design Framework",
+          "steps": [
+            "Ask questions to understand the problem",
+            "Provide a structure for your approach",
+            "Identify users and customers",
+            "Define use cases and goals",
+            "Assess current solutions and weak spots",
+            "Propose features to address gaps",
+            "Wrap up with clear recommendations"
+          ],
+          "keyQuestions": [
+            "Who are the users and customers?",
+            "What are the use cases and goals?",
+            "How well do current solutions address these needs?",
+            "What features would improve the weak spots?"
+          ]
+        },
+        "case-analysis": {
+          "name": "Case Analysis Framework",
+          "steps": [
+            "Structure the problem into components",
+            "Show strong instincts and business judgment",
+            "Drive the conversation forward",
+            "Be exhaustive in analysis",
+            "Discuss benefits and tradeoffs",
+            "Consider short-term and long-term impacts"
+          ],
+          "keyQuestions": [
+            "How can we break this down into smaller pieces?",
+            "What are the key business drivers?",
+            "What are the tradeoffs and limitations?",
+            "How would we measure success?"
+          ]
+        },
+        "behavioral-assessment": {
+          "name": "Behavioral Assessment Framework",
+          "areas": [
+            "Leadership and initiative",
+            "Problem-solving and analytical skills",
+            "Communication and collaboration",
+            "Impact and results",
+            "Technical understanding"
+          ],
+          "keyQuestions": [
+            "Can you give me an example of when you led without authority?",
+            "Tell me about a time you solved a difficult problem",
+            "How do you work with engineers and designers?",
+            "What was your biggest impact in your last role?"
+          ]
+        }
+      },
+      "evaluationCriteria": {
+        "excellent": {
+          "score": "8-10",
+          "characteristics": [
+            "Asks clarifying questions before jumping to solutions",
+            "Shows structured thinking and clear methodology",
+            "Demonstrates deep user empathy and customer focus",
+            "Considers business impact and metrics",
+            "Shows leadership and initiative",
+            "Thinks about tradeoffs and limitations realistically",
+            "Can break down complex problems systematically"
+          ]
+        },
+        "good": {
+          "score": "6-7",
+          "characteristics": [
+            "Shows some structure in approach",
+            "Demonstrates basic user understanding",
+            "Considers business aspects",
+            "Shows some leadership qualities",
+            "Can identify key problems and solutions"
+          ]
+        },
+        "needs-improvement": {
+          "score": "1-5",
+          "characteristics": [
+            "Jumps to solutions without understanding problem",
+            "Lacks structured thinking",
+            "Focuses on personal preferences over user needs",
+            "Doesn't consider business impact",
+            "Shows limited leadership or initiative",
+            "Can't break down complex problems"
+          ]
+        }
+      },
+      "commonMistakes": [
+        "Jumping to solutions without asking clarifying questions",
+        "Focusing on personal preferences instead of user needs",
+        "Not considering different user types and use cases",
+        "Ignoring business goals and metrics",
+        "Not thinking about tradeoffs and limitations",
+        "Lacking structured approach to problem-solving",
+        "Not showing leadership or initiative"
+      ],
+      "followUpQuestions": {
+        "product-sense": [
+          "How would you validate this solution with users?",
+          "What metrics would you use to measure success?",
+          "How would you prioritize these features?",
+          "What are the potential risks or limitations?"
+        ],
+        "strategy": [
+          "How does this align with business goals?",
+          "What's the market opportunity here?",
+          "How would you compete with existing solutions?",
+          "What would be your go-to-market strategy?"
+        ],
+        "execution": [
+          "How would you work with engineering to build this?",
+          "What would be your MVP approach?",
+          "How would you handle technical constraints?",
+          "What's your timeline and resource requirements?"
+        ]
+      }
+    }
+  },
+  "evaluationFrameworks": {
+    "product-questions": {
+      "framework": "User-First Product Design",
+      "steps": [
+        "Clarify the problem and constraints",
+        "Identify users and their needs",
+        "Define use cases and goals",
+        "Assess current solutions",
+        "Design features to address gaps",
+        "Consider implementation and metrics"
+      ],
+      "evaluationWeight": {
+        "user-empathy": 0.3,
+        "structured-thinking": 0.25,
+        "business-acumen": 0.2,
+        "creativity": 0.15,
+        "communication": 0.1
+      }
+    },
+    "case-questions": {
+      "framework": "Structured Problem Solving",
+      "steps": [
+        "Structure the problem",
+        "Show business instincts",
+        "Drive the conversation",
+        "Analyze tradeoffs",
+        "Provide recommendations"
+      ],
+      "evaluationWeight": {
+        "problem-structuring": 0.3,
+        "business-judgment": 0.25,
+        "leadership": 0.2,
+        "analytical-thinking": 0.15,
+        "communication": 0.1
+      }
+    },
+    "behavioral-questions": {
+      "framework": "STAR Method (Situation, Task, Action, Result)",
+      "evaluationWeight": {
+        "leadership": 0.3,
+        "problem-solving": 0.25,
+        "impact": 0.2,
+        "collaboration": 0.15,
+        "communication": 0.1
+      }
+    }
+  },
+  "pmCompetencies": {
+    "core-skills": [
+      "Product sense and user empathy",
+      "Structured thinking and problem-solving",
+      "Business acumen and strategic thinking",
+      "Leadership without authority",
+      "Communication and collaboration",
+      "Technical understanding",
+      "Data-driven decision making"
+    ],
+    "advanced-skills": [
+      "Market analysis and competitive intelligence",
+      "Go-to-market strategy",
+      "Stakeholder management",
+      "Cross-functional team leadership",
+      "Product roadmap planning",
+      "Metrics and analytics",
+      "User research and validation"
+    ]
+  }
+}

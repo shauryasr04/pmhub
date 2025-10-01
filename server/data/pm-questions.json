@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question": "Tell me about a time when you had to make a difficult product decision with limited data. How did you approach it?",
+    "category": "decision-making",
+    "level": "mid",
+    "followUp": "What metrics would you have used if you had more time to gather data?"
+  },
+  {
+    "id": 2,
+    "question": "How do you prioritize features when you have multiple stakeholders with conflicting requirements?",
+    "category": "prioritization",
+    "level": "mid",
+    "followUp": "Can you walk me through your prioritization framework?"
+  },
+  {
+    "id": 3,
+    "question": "Describe a product you've launched that didn't meet expectations. What went wrong and what did you learn?",
+    "category": "failure-analysis",
+    "level": "senior",
+    "followUp": "How would you prevent this from happening again in future launches?"
+  },
+  {
+    "id": 4,
+    "question": "How do you measure the success of a product feature?",
+    "category": "metrics",
+    "level": "junior",
+    "followUp": "What's the difference between leading and lagging indicators?"
+  },
+  {
+    "id": 5,
+    "question": "Walk me through how you would approach building a new product from scratch.",
+    "category": "product-strategy",
+    "level": "senior",
+    "followUp": "How would you validate the product-market fit hypothesis?"
+  },
+  {
+    "id": 6,
+    "question": "How do you handle technical debt in your product roadmap?",
+    "category": "technical",
+    "level": "mid",
+    "followUp": "How do you communicate the importance of technical debt to non-technical stakeholders?"
+  },
+  {
+    "id": 7,
+    "question": "Describe a time when you had to say no to a high-priority stakeholder request.",
+    "category": "stakeholder-management",
+    "level": "senior",
+    "followUp": "How did you maintain the relationship after saying no?"
+  },
+  {
+    "id": 8,
+    "question": "How do you conduct user research for your products?",
+    "category": "user-research",
+    "level": "mid",
+    "followUp": "What's the most valuable insight you've gained from user research?"
+  },
+  {
+    "id": 9,
+    "question": "Explain the difference between a product manager and a project manager.",
+    "category": "role-clarity",
+    "level": "junior",
+    "followUp": "How do you ensure you're focusing on the right activities as a PM?"
+  },
+  {
+    "id": 10,
+    "question": "How do you approach A/B testing for product features?",
+    "category": "experimentation",
+    "level": "mid",
+    "followUp": "What's the minimum sample size you'd need for statistical significance?"
+  },
+  {
+    "id": 11,
+    "question": "Describe your ideal product development process.",
+    "category": "process",
+    "level": "mid",
+    "followUp": "How do you adapt this process for different types of products?"
+  },
+  {
+    "id": 12,
+    "question": "How do you stay updated with industry trends and competitor products?",
+    "category": "market-awareness",
+    "level": "junior",
+    "followUp": "How do you translate market insights into product strategy?"
+  },
+  {
+    "id": 13,
+    "question": "What's your approach to building and maintaining a product roadmap?",
+    "category": "roadmapping",
+    "level": "mid",
+    "followUp": "How do you handle changes to the roadmap mid-quarter?"
+  },
+  {
+    "id": 14,
+    "question": "How do you work with engineering teams to estimate effort for features?",
+    "category": "collaboration",
+    "level": "mid",
+    "followUp": "What do you do when engineering estimates are much higher than expected?"
+  },
+  {
+    "id": 15,
+    "question": "Describe a time when you had to pivot your product strategy. What triggered the pivot?",
+    "category": "strategy",
+    "level": "senior",
+    "followUp": "How did you communicate the pivot to stakeholders and users?"
+  },
+  {
+    "id": 16,
+    "question": "How do you define and measure product-market fit?",
+    "category": "strategy",
+    "level": "senior",
+    "followUp": "What indicators would suggest you've lost product-market fit?"
+  },
+  {
+    "id": 17,
+    "question": "What's your approach to handling customer feedback and feature requests?",
+    "category": "customer-feedback",
+    "level": "mid",
+    "followUp": "How do you prioritize feature requests from different customer segments?"
+  },
+  {
+    "id": 18,
+    "question": "How do you ensure your product meets accessibility standards?",
+    "category": "inclusion",
+    "level": "mid",
+    "followUp": "What's your process for testing accessibility features?"
+  },
+  {
+    "id": 19,
+    "question": "Describe a time when you had to deprecate a product feature. How did you handle it?",
+    "category": "product-lifecycle",
+    "level": "senior",
+    "followUp": "How did you measure the impact of the deprecation on users?"
+  },
+  {
+    "id": 20,
+    "question": "How do you approach international expansion for your product?",
+    "category": "scaling",
+    "level": "senior",
+    "followUp": "What factors do you consider when choosing new markets?"
+  }
+]
