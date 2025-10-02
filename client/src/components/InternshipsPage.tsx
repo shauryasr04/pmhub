@@ -41,6 +41,7 @@ const InternshipsPage: React.FC<InternshipsPageProps> = ({ onBack }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState('all');
   const [filterLocation, setFilterLocation] = useState('all');
+  const [dataSource, setDataSource] = useState<string>('');
 
   // Mock data for demonstration (replace with actual API call)
   const mockInternships: Internship[] = [
@@ -186,14 +187,34 @@ const InternshipsPage: React.FC<InternshipsPageProps> = ({ onBack }) => {
     const loadInternships = async () => {
       setLoading(true);
       try {
-        // In a real implementation, you would call an API here
-        // For now, we'll use mock data
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+        console.log('Fetching internships from API...');
+        const response = await fetch('/api/internships');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log('Received internships data:', data);
+        
+        if (data.internships && data.internships.length > 0) {
+          setInternships(data.internships);
+          setFilteredInternships(data.internships);
+          setDataSource(data.source || 'Google Sheets');
+        } else {
+          // Fallback to mock data if no real data
+          console.log('No internships found, using mock data');
+          setInternships(mockInternships);
+          setFilteredInternships(mockInternships);
+          setDataSource('Sample Data');
+        }
+      } catch (err) {
+        console.error('Error loading internships:', err);
+        // Fallback to mock data on error
         setInternships(mockInternships);
         setFilteredInternships(mockInternships);
-      } catch (err) {
-        setError('Failed to load internships. Please try again later.');
-        console.error('Error loading internships:', err);
+        setDataSource('Sample Data');
+        setError('Using sample data - Google Sheets temporarily unavailable');
       } finally {
         setLoading(false);
       }
@@ -318,9 +339,9 @@ const InternshipsPage: React.FC<InternshipsPageProps> = ({ onBack }) => {
                 </button>
               )}
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">PM Internships</h1>
+                <h1 className="text-3xl font-bold text-gray-900">PM Jobs & Internships</h1>
                 <p className="text-gray-600 mt-2">
-                  Find your next Product Management internship opportunity
+                  Find your next Product Management opportunity - internships and new grad positions
                 </p>
               </div>
             </div>
@@ -328,6 +349,15 @@ const InternshipsPage: React.FC<InternshipsPageProps> = ({ onBack }) => {
               <span className="text-sm text-gray-500">
                 {filteredInternships.length} opportunities found
               </span>
+              {dataSource && (
+                <span className={`text-xs px-2 py-1 rounded-full ${
+                  dataSource === 'Google Sheets' 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-yellow-100 text-yellow-800'
+                }`}>
+                  {dataSource}
+                </span>
+              )}
               <button
                 onClick={() => window.location.reload()}
                 className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900"

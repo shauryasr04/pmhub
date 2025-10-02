@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
-import { Video, Brain, Clock, Play, Briefcase } from 'lucide-react';
+import { Video, Brain, Clock, Play, Briefcase, BookOpen, Users, Calendar, Target } from 'lucide-react';
 import { InterviewSettings } from '../types';
 
 interface WelcomeScreenProps {
   onStartInterview: (settings: InterviewSettings) => void;
   onNavigateToInternships: () => void;
+  onNavigateToInterviewPrep: () => void;
+  onNavigateToNetworking: () => void;
+  onNavigateToTimelines: () => void;
 }
 
-const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartInterview, onNavigateToInternships }) => {
+const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ 
+  onStartInterview, 
+  onNavigateToInternships, 
+  onNavigateToInterviewPrep, 
+  onNavigateToNetworking, 
+  onNavigateToTimelines 
+}) => {
   const [settings, setSettings] = useState<InterviewSettings>({
     category: 'all',
     level: 'mid',
@@ -54,30 +63,45 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartInterview, onNavig
             </div>
           </div>
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            PM Video Interviewer
+            PM Hub
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Practice Product Management interviews with AI-powered video calls. 
-            Experience realistic video interviews with human-like AI interviewer.
+            Your all-in-one platform for Product Management recruiting success. 
+            From interview prep to networking, we've got you covered.
           </p>
         </div>
 
         {/* Features */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
             <Video className="w-8 h-8 text-primary-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Video Call Interview</h3>
-            <p className="text-gray-600">Face-to-face video interview with AI interviewer, just like Zoom</p>
+            <h3 className="text-lg font-semibold mb-2">AI Interview Practice</h3>
+            <p className="text-gray-600">Practice with AI-powered video interviews that feel like real PM interviews</p>
           </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
-            <Brain className="w-8 h-8 text-primary-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">AI Interviewer</h3>
-            <p className="text-gray-600">Professional AI interviewer with human-like voice and responses</p>
+          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <BookOpen className="w-8 h-8 text-primary-600 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2">Interview Prep Guide</h3>
+            <p className="text-gray-600">Comprehensive guides for internship and new grad PM interviews</p>
           </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
-            <Clock className="w-8 h-8 text-primary-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Flexible Duration</h3>
-            <p className="text-gray-600">Choose interview length that fits your schedule</p>
+          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <Users className="w-8 h-8 text-primary-600 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2">Networking Guide</h3>
+            <p className="text-gray-600">Learn how to network effectively in the PM community</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <Calendar className="w-8 h-8 text-primary-600 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2">Recruiting Timelines</h3>
+            <p className="text-gray-600">Stay on track with detailed PM recruiting timelines</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <Briefcase className="w-8 h-8 text-primary-600 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2">Job Opportunities</h3>
+            <p className="text-gray-600">Find PM internships and new grad positions</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <Target className="w-8 h-8 text-primary-600 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2">All-in-One Platform</h3>
+            <p className="text-gray-600">Everything you need for PM recruiting success in one place</p>
           </div>
         </div>
 
@@ -144,21 +168,45 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartInterview, onNavig
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             <button
               onClick={handleStart}
-              className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
+              className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
             >
               <Play className="w-5 h-5 mr-2" />
-              Start Interview
+              Start AI Interview
+            </button>
+            
+            <button
+              onClick={onNavigateToInterviewPrep}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
+            >
+              <BookOpen className="w-5 h-5 mr-2" />
+              Interview Prep
+            </button>
+            
+            <button
+              onClick={onNavigateToNetworking}
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
+            >
+              <Users className="w-5 h-5 mr-2" />
+              Networking Guide
+            </button>
+            
+            <button
+              onClick={onNavigateToTimelines}
+              className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
+            >
+              <Calendar className="w-5 h-5 mr-2" />
+              Recruiting Timelines
             </button>
             
             <button
               onClick={onNavigateToInternships}
-              className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
+              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
             >
               <Briefcase className="w-5 h-5 mr-2" />
-              Browse Internships
+              Job Opportunities
             </button>
           </div>
         </div>
