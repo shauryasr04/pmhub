@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import VideoCallInterview from './components/VideoCallInterview';
 import WelcomeScreen from './components/WelcomeScreen';
+import InternshipsPage from './components/InternshipsPage';
 import { InterviewSession } from './types';
 
 function App() {
   const [session, setSession] = useState<InterviewSession | null>(null);
+  const [currentPage, setCurrentPage] = useState<'home' | 'interview' | 'internships'>('home');
 
   const startInterview = (settings: {
     category: string;
@@ -23,6 +25,7 @@ function App() {
       isActive: true,
       score: 0
     });
+    setCurrentPage('interview');
   };
 
   const endInterview = () => {
@@ -31,18 +34,25 @@ function App() {
       window.speechSynthesis.cancel();
     }
     
-    // End the interview and return to welcome screen
+    // End the interview and return to home
     setSession(null);
+    setCurrentPage('home');
   };
 
   const resetInterview = () => {
     setSession(null);
+    setCurrentPage('home');
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {!session ? (
-        <WelcomeScreen onStartInterview={startInterview} />
+      {currentPage === 'internships' ? (
+        <InternshipsPage onBack={() => setCurrentPage('home')} />
+      ) : !session ? (
+        <WelcomeScreen 
+          onStartInterview={startInterview}
+          onNavigateToInternships={() => setCurrentPage('internships')}
+        />
       ) : (
         <VideoCallInterview
           session={session}

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Video, Brain, Clock, Play } from 'lucide-react';
+import { Video, Brain, Clock, Play, Briefcase } from 'lucide-react';
 import { InterviewSettings } from '../types';
 
 interface WelcomeScreenProps {
   onStartInterview: (settings: InterviewSettings) => void;
+  onNavigateToInternships: () => void;
 }
 
-const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartInterview }) => {
+const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartInterview, onNavigateToInternships }) => {
   const [settings, setSettings] = useState<InterviewSettings>({
     category: 'all',
     level: 'mid',
@@ -142,14 +143,22 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartInterview }) => {
             </div>
           </div>
 
-          {/* Start Button */}
-          <div className="text-center mt-8">
+          {/* Navigation Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <button
               onClick={handleStart}
-              className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 flex items-center mx-auto"
+              className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
             >
               <Play className="w-5 h-5 mr-2" />
               Start Interview
+            </button>
+            
+            <button
+              onClick={onNavigateToInternships}
+              className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
+            >
+              <Briefcase className="w-5 h-5 mr-2" />
+              Browse Internships
             </button>
           </div>
         </div>
