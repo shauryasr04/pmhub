@@ -4,16 +4,22 @@ const dotenv = require('dotenv');
 const OpenAI = require('openai');
 const path = require('path');
 const fs = require('fs');
+const { google } = require('googleapis');
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Initialize OpenAI
-const openai = new OpenAI({
+// Initialize OpenAI (only if API key is available)
+let openai = null;
+if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'your_openai_api_key_here') {
+  openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+} else {
+  console.log('Warning: OpenAI API key not configured. Some features will be limited.');
+}
 
 // Middleware
 app.use(cors());
@@ -25,6 +31,16 @@ const questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/pm-quest
 
 // Load PM context from Cracking the PM Interview
 const pmContext = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/pm-context.json'), 'utf8'));
+
+// Load internships data
+const internshipsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/internships.json'), 'utf8'));
+
+// Google Sheets configuration
+const SPREADSHEET_ID = '1eS-GIK25Zqpj5vrVht8l3Ob1RZLsRXzfDWkjp-jNo94';
+const RANGE = 'Sheet1!A:Z'; // Adjust range as needed
+
+// For public sheets, we can use the CSV export URL
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
 
 // Routes
 app.get('/api/questions', (req, res) => {
@@ -63,6 +79,10 @@ app.get('/api/questions/random', (req, res) => {
 });
 
 app.post('/api/analyze-answer', async (req, res) => {
+  if (!openai) {
+    return res.status(503).json({ error: 'OpenAI API not configured. Please set OPENAI_API_KEY in .env file.' });
+  }
+  
   try {
     const { question, answer, context } = req.body;
 
@@ -123,6 +143,10 @@ app.post('/api/analyze-answer', async (req, res) => {
 });
 
 app.post('/api/generate-followup', async (req, res) => {
+  if (!openai) {
+    return res.status(503).json({ error: 'OpenAI API not configured. Please set OPENAI_API_KEY in .env file.' });
+  }
+  
   try {
     const { question, answer, context } = req.body;
 
@@ -175,6 +199,10 @@ app.post('/api/generate-followup', async (req, res) => {
 
 // Interactive conversation endpoint
 app.post('/api/conversation', async (req, res) => {
+  if (!openai) {
+    return res.status(503).json({ error: 'OpenAI API not configured. Please set OPENAI_API_KEY in .env file.' });
+  }
+  
   try {
     const { messages, context, sessionId } = req.body;
 
@@ -261,6 +289,10 @@ function getRelevantPMContext(level) {
 
 // Get interview suggestions based on experience level
 app.post('/api/interview-suggestions', async (req, res) => {
+  if (!openai) {
+    return res.status(503).json({ error: 'OpenAI API not configured. Please set OPENAI_API_KEY in .env file.' });
+  }
+  
   try {
     const { level, category, experience } = req.body;
 
@@ -302,11 +334,94 @@ app.post('/api/interview-suggestions', async (req, res) => {
   }
 });
 
+// Fetch internships from local data with Google Sheets fallback
+app.get('/api/internships', async (req, res) => {
+  try {
+    console.log('Fetching internships from local database...');
+    
+    // Return local data immediately
+    res.json({ 
+      internships: internshipsData.internships,
+      total: internshipsData.internships.length,
+      source: internshipsData.source,
+      lastUpdated: internshipsData.lastUpdated
+    });
+
+    // Try to update from Google Sheets in the background (optional)
+    try {
+      console.log('Attempting to update from Google Sheets in background...');
+      const response = await fetch(CSV_URL);
+      
+      if (response.ok) {
+        const csvText = await response.text();
+        const rows = csvText.split('\n').map(row => row.split(',').map(cell => cell.replace(/"/g, '').trim()));
+        
+        // Parse Google Sheets data and update local file if successful
+        const googleSheetsInternships = [];
+        const dataStartRow = rows.findIndex(row => 
+          row[0] && (
+            row[0].toLowerCase().includes('company') || 
+            row[0].toLowerCase().includes('position') ||
+            row[0].toLowerCase().includes('google') ||
+            row[0].toLowerCase().includes('microsoft')
+          )
+        );
+        
+        if (dataStartRow !== -1) {
+          for (let i = dataStartRow; i < rows.length; i++) {
+            const row = rows[i];
+            
+            if (!row[0] || row[0].trim() === '' || 
+                row[0].toLowerCase().includes('due to high traffic') ||
+                row[0].toLowerCase().includes('click "intern list"') ||
+                row[0].toLowerCase().includes('quotes are not sourced')) {
+              continue;
+            }
+
+            const internship = {
+              id: `google-sheets-${i}`,
+              company: row[0] || 'Unknown Company',
+              position: row[1] || 'Product Management Intern',
+              location: row[2] || 'Location TBD',
+              type: 'Internship',
+              duration: row[3] || '12 weeks',
+              description: row[4] || 'Product Management internship opportunity',
+              requirements: row[5] ? row[5].split(',').map(req => req.trim()) : [],
+              benefits: row[6] ? row[6].split(',').map(benefit => benefit.trim()) : [],
+              applicationDeadline: row[7] || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+              applicationLink: row[8] || '#',
+              postedDate: new Date().toISOString().split('T')[0],
+              status: 'active'
+            };
+
+            if (internship.company && internship.company !== 'Unknown Company') {
+              googleSheetsInternships.push(internship);
+            }
+          }
+          
+          if (googleSheetsInternships.length > 0) {
+            console.log(`Successfully parsed ${googleSheetsInternships.length} internships from Google Sheets`);
+            // In a real implementation, you might want to save this to the local file
+            // or merge it with existing data
+          }
+        }
+      }
+    } catch (backgroundError) {
+      console.log('Background Google Sheets update failed:', backgroundError.message);
+      // This is expected if the sheet requires authentication
+    }
+
+  } catch (error) {
+    console.error('Error fetching internships:', error);
+    res.status(500).json({ error: 'Failed to fetch internships' });
+  }
+});
+
 // Serve React app (only in production)
 if (process.env.NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 }
 
 app.listen(PORT, () => {

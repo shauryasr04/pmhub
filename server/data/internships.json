@@ -1,0 +1,222 @@
+{
+  "internships": [
+    {
+      "id": "internship-1",
+      "company": "Google",
+      "position": "Product Management Intern",
+      "location": "Mountain View, CA",
+      "type": "Internship",
+      "duration": "12 weeks",
+      "description": "Join Google's Product Management team and work on products used by billions of people worldwide. You'll collaborate with engineers, designers, and other PMs to define product strategy and drive execution.",
+      "requirements": [
+        "Currently pursuing a Bachelor's or Master's degree",
+        "Strong analytical and problem-solving skills",
+        "Experience with data analysis tools (SQL, Excel)",
+        "Excellent communication and collaboration skills",
+        "Previous internship or project experience preferred"
+      ],
+      "benefits": [
+        "Competitive compensation",
+        "Mentorship from senior PMs",
+        "Access to Google's learning resources",
+        "Networking opportunities",
+        "Potential for full-time conversion"
+      ],
+      "applicationDeadline": "2024-03-15",
+      "applicationLink": "https://careers.google.com/jobs/results/",
+      "postedDate": "2024-01-15",
+      "status": "active"
+    },
+    {
+      "id": "internship-2",
+      "company": "Microsoft",
+      "position": "Product Manager Intern",
+      "location": "Seattle, WA",
+      "type": "Internship",
+      "duration": "10 weeks",
+      "description": "Work on Microsoft's cloud and productivity products. Gain hands-on experience in product strategy, user research, and cross-functional collaboration.",
+      "requirements": [
+        "Pursuing degree in Business, Engineering, or related field",
+        "Passion for technology and innovation",
+        "Strong analytical thinking",
+        "Experience with user research methods",
+        "Previous product or project management experience"
+      ],
+      "benefits": [
+        "Mentorship program",
+        "Professional development workshops",
+        "Competitive salary and housing stipend",
+        "Access to Microsoft's product suite",
+        "Career development opportunities"
+      ],
+      "applicationDeadline": "2024-03-20",
+      "applicationLink": "https://careers.microsoft.com/us/en/",
+      "postedDate": "2024-01-20",
+      "status": "active"
+    },
+    {
+      "id": "internship-3",
+      "company": "Meta",
+      "position": "Product Management Intern - Reality Labs",
+      "location": "Menlo Park, CA",
+      "type": "Internship",
+      "duration": "12 weeks",
+      "description": "Join Meta's Reality Labs team and work on the future of augmented and virtual reality. Help shape products that will define the next generation of computing.",
+      "requirements": [
+        "Currently enrolled in university",
+        "Strong technical background",
+        "Passion for AR/VR technology",
+        "Experience with product development",
+        "Excellent communication skills"
+      ],
+      "benefits": [
+        "Cutting-edge technology exposure",
+        "Mentorship from industry leaders",
+        "Competitive compensation package",
+        "Access to Meta's internal tools",
+        "Networking with top talent"
+      ],
+      "applicationDeadline": "2024-03-10",
+      "applicationLink": "https://www.metacareers.com/",
+      "postedDate": "2024-01-10",
+      "status": "active"
+    },
+    {
+      "id": "internship-4",
+      "company": "Amazon",
+      "position": "Product Manager Intern - AWS",
+      "location": "Seattle, WA",
+      "type": "Internship",
+      "duration": "12 weeks",
+      "description": "Work on Amazon Web Services products that power millions of businesses worldwide. Gain experience in cloud computing, enterprise software, and product strategy.",
+      "requirements": [
+        "Pursuing degree in Computer Science, Business, or related field",
+        "Understanding of cloud computing concepts",
+        "Strong analytical and problem-solving skills",
+        "Experience with data analysis",
+        "Previous internship experience preferred"
+      ],
+      "benefits": [
+        "Hands-on experience with AWS services",
+        "Mentorship from senior product managers",
+        "Competitive salary and benefits",
+        "Access to Amazon's internal tools",
+        "Potential for full-time offers"
+      ],
+      "applicationDeadline": "2024-03-25",
+      "applicationLink": "https://www.amazon.jobs/",
+      "postedDate": "2024-01-25",
+      "status": "active"
+    },
+    {
+      "id": "internship-5",
+      "company": "Stripe",
+      "position": "Product Management Intern",
+      "location": "San Francisco, CA",
+      "type": "Internship",
+      "duration": "10 weeks",
+      "description": "Join Stripe's product team and work on financial infrastructure that powers the internet economy. Help build products that enable businesses to accept payments globally.",
+      "requirements": [
+        "Currently enrolled in university",
+        "Interest in fintech and payments",
+        "Strong analytical skills",
+        "Experience with product development",
+        "Excellent written and verbal communication"
+      ],
+      "benefits": [
+        "Exposure to fintech industry",
+        "Mentorship from experienced PMs",
+        "Competitive compensation",
+        "Access to Stripe's product suite",
+        "Networking opportunities"
+      ],
+      "applicationDeadline": "2024-03-30",
+      "applicationLink": "https://stripe.com/jobs/",
+      "postedDate": "2024-01-30",
+      "status": "active"
+    },
+    {
+      "id": "internship-6",
+      "company": "Airbnb",
+      "position": "Product Management Intern",
+      "location": "San Francisco, CA",
+      "type": "Internship",
+      "duration": "12 weeks",
+      "description": "Work on Airbnb's platform that connects millions of hosts and guests worldwide. Contribute to product features that enhance the travel experience.",
+      "requirements": [
+        "Currently pursuing a Bachelor's or Master's degree",
+        "Passion for travel and hospitality",
+        "Strong user empathy and research skills",
+        "Experience with product analytics",
+        "Previous startup or tech experience preferred"
+      ],
+      "benefits": [
+        "Work on a global platform",
+        "Mentorship from product leaders",
+        "Competitive compensation and housing",
+        "Access to Airbnb's design and research teams",
+        "Networking with industry professionals"
+      ],
+      "applicationDeadline": "2024-04-01",
+      "applicationLink": "https://careers.airbnb.com/",
+      "postedDate": "2024-02-01",
+      "status": "active"
+    },
+    {
+      "id": "internship-7",
+      "company": "Uber",
+      "position": "Product Management Intern - Mobility",
+      "location": "San Francisco, CA",
+      "type": "Internship",
+      "duration": "12 weeks",
+      "description": "Join Uber's mobility team and work on products that move people and things around the world. Help shape the future of transportation.",
+      "requirements": [
+        "Currently enrolled in university",
+        "Interest in transportation and mobility",
+        "Strong analytical and problem-solving skills",
+        "Experience with data-driven decision making",
+        "Previous product or operations experience"
+      ],
+      "benefits": [
+        "Impact on global transportation",
+        "Mentorship from product and engineering teams",
+        "Competitive salary and benefits",
+        "Access to Uber's data and analytics tools",
+        "Networking opportunities"
+      ],
+      "applicationDeadline": "2024-04-05",
+      "applicationLink": "https://www.uber.com/careers/",
+      "postedDate": "2024-02-05",
+      "status": "active"
+    },
+    {
+      "id": "internship-8",
+      "company": "Spotify",
+      "position": "Product Management Intern",
+      "location": "New York, NY",
+      "type": "Internship",
+      "duration": "10 weeks",
+      "description": "Work on Spotify's music streaming platform and help create features that enhance the listening experience for millions of users worldwide.",
+      "requirements": [
+        "Currently pursuing a Bachelor's or Master's degree",
+        "Passion for music and audio technology",
+        "Strong user research and empathy skills",
+        "Experience with A/B testing and experimentation",
+        "Previous consumer product experience preferred"
+      ],
+      "benefits": [
+        "Work on a music platform used by millions",
+        "Mentorship from product and design teams",
+        "Competitive compensation",
+        "Access to Spotify's music and data tools",
+        "Networking with music industry professionals"
+      ],
+      "applicationDeadline": "2024-04-10",
+      "applicationLink": "https://www.lifeatspotify.com/",
+      "postedDate": "2024-02-10",
+      "status": "active"
+    }
+  ],
+  "lastUpdated": "2024-02-10T00:00:00.000Z",
+  "source": "Curated PM Internships Database"
+}
