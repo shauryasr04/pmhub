@@ -14,7 +14,7 @@ import {
   Settings,
   User
 } from 'lucide-react';
-import { speakWithHumanVoice } from '../utils/voiceUtils';
+import { speakWithHumanVoice, stopAllSpeech } from '../utils/voiceUtils';
 
 interface VideoCallInterviewProps {
   session: {
@@ -56,6 +56,19 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [recognition, isRecording]);
+
+  // Cleanup on component unmount
+  useEffect(() => {
+    return () => {
+      // Force stop all speech synthesis when component unmounts
+      stopAllSpeech();
+      
+      // Stop speech recognition if active
+      if (recognition && isRecording) {
+        recognition.stop();
+      }
+    };
   }, [recognition, isRecording]);
 
   // Initialize speech recognition
@@ -238,8 +251,8 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
     const confirmed = window.confirm('Are you sure you want to end the interview? This action cannot be undone.');
     
     if (confirmed) {
-      // Stop any ongoing speech synthesis
-      window.speechSynthesis.cancel();
+      // Force stop all speech synthesis
+      stopAllSpeech();
       
       // Stop any ongoing speech recognition
       if (recognition && isRecording) {
@@ -251,6 +264,11 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       setIsAISpeaking(false);
       setIsRecording(false);
       setIsListening(false);
+      
+      // Clear the speech synthesis ref
+      if (speechSynthesis.current) {
+        speechSynthesis.current = null;
+      }
       
       // End the interview
       onEndInterview();

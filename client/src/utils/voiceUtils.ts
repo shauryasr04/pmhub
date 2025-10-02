@@ -131,3 +131,20 @@ export const waitForVoices = (): Promise<SpeechSynthesisVoice[]> => {
     }
   });
 };
+
+// Force stop all speech synthesis
+export const stopAllSpeech = (): void => {
+  if ('speechSynthesis' in window) {
+    // Cancel all pending speech
+    window.speechSynthesis.cancel();
+    
+    // Clear the speech queue by speaking an empty utterance and immediately canceling it
+    const emptyUtterance = new SpeechSynthesisUtterance('');
+    window.speechSynthesis.speak(emptyUtterance);
+    window.speechSynthesis.cancel();
+    
+    // Force stop any ongoing speech
+    window.speechSynthesis.pause();
+    window.speechSynthesis.cancel();
+  }
+};

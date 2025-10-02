@@ -26,6 +26,11 @@ function App() {
   };
 
   const endInterview = () => {
+    // Stop all speech synthesis before ending
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    
     // End the interview and return to welcome screen
     setSession(null);
   };
