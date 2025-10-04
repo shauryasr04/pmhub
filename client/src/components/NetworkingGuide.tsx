@@ -9,7 +9,7 @@ import {
   Linkedin,
   Twitter,
   Coffee,
-  Handshake,
+  UserPlus,
   Target,
   Clock,
   CheckCircle,
@@ -204,7 +204,7 @@ const NetworkingGuide: React.FC<NetworkingGuideProps> = ({ onBack }) => {
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
               }`}
             >
-              <Handshake className="w-4 h-4 inline mr-2" />
+              <UserPlus className="w-4 h-4 inline mr-2" />
               New Grad Networking
             </button>
           </div>
