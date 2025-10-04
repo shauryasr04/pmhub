@@ -78,8 +78,8 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       const recognitionInstance = new SpeechRecognition();
       
-      recognitionInstance.continuous = true;
-      recognitionInstance.interimResults = true;
+      recognitionInstance.continuous = false;
+      recognitionInstance.interimResults = false;
       recognitionInstance.lang = 'en-US';
 
       recognitionInstance.onstart = () => {
@@ -89,18 +89,15 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
 
       recognitionInstance.onresult = (event) => {
         let finalTranscript = '';
-        let interimTranscript = '';
 
         for (let i = event.resultIndex; i < event.results.length; i++) {
           const transcript = event.results[i][0].transcript;
           if (event.results[i].isFinal) {
             finalTranscript += transcript;
-          } else {
-            interimTranscript += transcript;
           }
         }
 
-        // If we have a final transcript, process it
+        // Only process final transcripts
         if (finalTranscript.trim()) {
           handleVoiceInput(finalTranscript.trim());
         }
@@ -187,7 +184,14 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       setConversationHistory([{role: 'user', content: initialMessage}, {role: 'assistant', content: data.response}]);
       
       // Auto-speak the welcome message
-      speakText(data.response);
+      await speakText(data.response);
+      
+      // After AI finishes speaking, start recording for the first response
+      setTimeout(() => {
+        if (recognition && !isRecording && !isProcessing) {
+          startRecording();
+        }
+      }, 1000); // Wait 1 second after AI finishes speaking
     } catch (error) {
       console.error('Error starting conversation:', error);
       if (error instanceof Error && error.message.includes('OpenAI API not configured')) {
@@ -231,7 +235,14 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       setConversationHistory([...updatedHistory, {role: 'assistant', content: data.response}]);
       
       // Auto-speak the response
-      speakText(data.response);
+      await speakText(data.response);
+      
+      // After AI finishes speaking, restart recording for the next response
+      setTimeout(() => {
+        if (recognition && !isRecording && !isProcessing) {
+          startRecording();
+        }
+      }, 1000); // Wait 1 second after AI finishes speaking
     } catch (error) {
       console.error('Error processing voice input:', error);
       if (error instanceof Error && error.message.includes('OpenAI API not configured')) {
@@ -245,7 +256,7 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
   };
 
   const startRecording = () => {
-    if (recognition && !isRecording) {
+    if (recognition && !isRecording && !isProcessing) {
       setError(null);
       setIsRecording(true);
       recognition.start();
@@ -258,17 +269,23 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
     }
   };
 
-  const speakText = (text: string) => {
+  const speakText = async (text: string) => {
     if (!isMuted) {
-      speakWithHumanVoice(
-        text,
-        () => setIsAISpeaking(true),
-        () => setIsAISpeaking(false),
-        (error) => {
-          console.error('Speech synthesis error:', error);
-          setIsAISpeaking(false);
-        }
-      );
+      return new Promise<void>((resolve) => {
+        speakWithHumanVoice(
+          text,
+          () => setIsAISpeaking(true),
+          () => {
+            setIsAISpeaking(false);
+            resolve();
+          },
+          (error) => {
+            console.error('Speech synthesis error:', error);
+            setIsAISpeaking(false);
+            resolve();
+          }
+        );
+      });
     }
   };
 
