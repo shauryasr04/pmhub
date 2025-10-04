@@ -5,11 +5,14 @@ import InternshipsPage from './components/InternshipsPage';
 import InterviewPrepGuide from './components/InterviewPrepGuide';
 import NetworkingGuide from './components/NetworkingGuide';
 import RecruitingTimelines from './components/RecruitingTimelines';
+import QuestionBank from './components/QuestionBank';
+import QuestionSpecificInterview from './components/QuestionSpecificInterview';
 import { InterviewSession } from './types';
 
 function App() {
   const [session, setSession] = useState<InterviewSession | null>(null);
-  const [currentPage, setCurrentPage] = useState<'home' | 'interview' | 'internships' | 'interview-prep' | 'networking' | 'timelines'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'interview' | 'internships' | 'interview-prep' | 'networking' | 'timelines' | 'question-bank' | 'question-interview'>('home');
+  const [selectedQuestion, setSelectedQuestion] = useState<any>(null);
 
   const startInterview = (settings: {
     category: string;
@@ -47,6 +50,21 @@ function App() {
     setCurrentPage('home');
   };
 
+  const handleQuestionSelect = (question: any) => {
+    setSelectedQuestion(question);
+    setCurrentPage('question-interview');
+  };
+
+  const handleBackToQuestions = () => {
+    setSelectedQuestion(null);
+    setCurrentPage('question-bank');
+  };
+
+  const handleEndQuestionInterview = () => {
+    setSelectedQuestion(null);
+    setCurrentPage('home');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {currentPage === 'internships' ? (
@@ -57,6 +75,17 @@ function App() {
         <NetworkingGuide onBack={() => setCurrentPage('home')} />
       ) : currentPage === 'timelines' ? (
         <RecruitingTimelines onBack={() => setCurrentPage('home')} />
+      ) : currentPage === 'question-bank' ? (
+        <QuestionBank 
+          onBack={() => setCurrentPage('home')} 
+          onSelectQuestion={handleQuestionSelect}
+        />
+      ) : currentPage === 'question-interview' ? (
+        <QuestionSpecificInterview
+          question={selectedQuestion}
+          onBack={handleBackToQuestions}
+          onEndInterview={handleEndQuestionInterview}
+        />
       ) : !session ? (
         <WelcomeScreen 
           onStartInterview={startInterview}
@@ -64,6 +93,7 @@ function App() {
           onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
           onNavigateToNetworking={() => setCurrentPage('networking')}
           onNavigateToTimelines={() => setCurrentPage('timelines')}
+          onNavigateToQuestionBank={() => setCurrentPage('question-bank')}
         />
       ) : (
         <VideoCallInterview

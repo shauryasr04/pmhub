@@ -8,6 +8,7 @@ interface WelcomeScreenProps {
   onNavigateToInterviewPrep: () => void;
   onNavigateToNetworking: () => void;
   onNavigateToTimelines: () => void;
+  onNavigateToQuestionBank: () => void;
 }
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ 
@@ -15,7 +16,8 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   onNavigateToInternships, 
   onNavigateToInterviewPrep, 
   onNavigateToNetworking, 
-  onNavigateToTimelines 
+  onNavigateToTimelines,
+  onNavigateToQuestionBank
 }) => {
   const [settings, setSettings] = useState<InterviewSettings>({
     category: 'all',
@@ -78,6 +80,11 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             <h3 className="text-lg font-semibold mb-2">AI Interview Practice</h3>
             <p className="text-gray-600">Practice with AI-powered video interviews that feel like real PM interviews</p>
           </div>
+          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-2 border-indigo-200">
+            <Target className="w-8 h-8 text-indigo-600 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2">Question Bank</h3>
+            <p className="text-gray-600">Choose specific questions to practice with AI feedback and detailed analysis</p>
+          </div>
           <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
             <BookOpen className="w-8 h-8 text-primary-600 mx-auto mb-4" />
             <h3 className="text-lg font-semibold mb-2">Interview Prep Guide</h3>
@@ -97,11 +104,6 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             <Briefcase className="w-8 h-8 text-primary-600 mx-auto mb-4" />
             <h3 className="text-lg font-semibold mb-2">Job Opportunities</h3>
             <p className="text-gray-600">Find PM internships and new grad positions</p>
-          </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <Target className="w-8 h-8 text-primary-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">All-in-One Platform</h3>
-            <p className="text-gray-600">Everything you need for PM recruiting success in one place</p>
           </div>
         </div>
 
@@ -175,6 +177,14 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             >
               <Play className="w-5 h-5 mr-2" />
               Start AI Interview
+            </button>
+            
+            <button
+              onClick={onNavigateToQuestionBank}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
+            >
+              <Target className="w-5 h-5 mr-2" />
+              Question Bank
             </button>
             
             <button
