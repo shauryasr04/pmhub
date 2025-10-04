@@ -37,7 +37,6 @@ interface QuestionBankProps {
   onNavigateToInterviewPrep: () => void;
   onNavigateToNetworking: () => void;
   onNavigateToTimelines: () => void;
-  onNavigateToInternships: () => void;
   onNavigateToHome: () => void;
 }
 
@@ -48,7 +47,6 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
   onNavigateToInterviewPrep, 
   onNavigateToNetworking, 
   onNavigateToTimelines, 
-  onNavigateToInternships,
   onNavigateToHome
 }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -351,7 +349,6 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
         onNavigateToInterviewPrep={onNavigateToInterviewPrep}
         onNavigateToNetworking={onNavigateToNetworking}
         onNavigateToTimelines={onNavigateToTimelines}
-        onNavigateToInternships={onNavigateToInternships}
         onNavigateToHome={onNavigateToHome}
         currentPage="question-bank"
       />

@@ -26,7 +26,7 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
   onNavigateToInternships,
   onNavigateToHome
 }) => {
-  const [activeTab, setActiveTab] = useState<'internship' | 'newgrad'>('internship');
+  const [activeTab, setActiveTab] = useState<'internship' | 'newgrad' | 'other'>('internship');
 
   const internshipTimeline = {
     companies: [
@@ -218,7 +218,7 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
     ]
   };
 
-  const currentData = activeTab === 'internship' ? internshipTimeline : newGradTimeline;
+  const currentData = activeTab === 'internship' ? internshipTimeline : activeTab === 'newgrad' ? newGradTimeline : null;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -227,7 +227,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         onNavigateToInterviewPrep={onNavigateToInterviewPrep}
         onNavigateToNetworking={onNavigateToNetworking}
         onNavigateToTimelines={onNavigateToTimelines}
-        onNavigateToInternships={onNavigateToInternships}
         onNavigateToHome={onNavigateToHome}
         currentPage="timelines"
       />
@@ -246,7 +245,7 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
               </button>
             )}
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">APM Recruiting Timelines</h1>
+              <h1 className="text-3xl font-bold text-gray-900">APM Internship and New Grad Recruiting Timelines</h1>
               <p className="text-gray-600 mt-2">
                 Complete timeline for APM internship and new grad recruiting based on current 2025-2026 opportunities
               </p>
@@ -284,19 +283,55 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
               <GraduationCap className="w-4 h-4 inline mr-2" />
               New Grad Timeline
             </button>
+            <button
+              onClick={() => setActiveTab('other')}
+              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'other'
+                  ? 'border-blue-500 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              <ExternalLink className="w-4 h-4 inline mr-2" />
+              Other Opportunities
+            </button>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Company Deadlines */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <Clock className="w-6 h-6 mr-3 text-blue-600" />
-            {activeTab === 'internship' ? 'APM Internship Deadlines' : 'APM New Grad Deadlines'}
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {currentData.companies.map((company, index) => (
+        {activeTab === 'other' ? (
+          /* Other Opportunities Content */
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <ExternalLink className="w-6 h-6 mr-3 text-blue-600" />
+              Other PM Opportunities
+            </h2>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div className="text-center py-12">
+                <ExternalLink className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Job Opportunities</h3>
+                <p className="text-gray-600 mb-6">
+                  Browse current PM job openings, internships, and other opportunities from top companies.
+                </p>
+                <button
+                  onClick={onNavigateToInternships}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center mx-auto"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View All Opportunities
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Company Deadlines */
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <Clock className="w-6 h-6 mr-3 text-blue-600" />
+              {activeTab === 'internship' ? 'APM Internship Deadlines' : 'APM New Grad Deadlines'}
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {currentData?.companies.map((company, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
                   <span className="text-3xl mr-3">{company.logo}</span>
@@ -340,8 +375,9 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
                 </div>
               </div>
             ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Quick Tips */}
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">

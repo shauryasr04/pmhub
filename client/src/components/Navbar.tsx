@@ -1,11 +1,10 @@
 import React from 'react';
-import { Brain, BookOpen, Users, Calendar, Briefcase } from 'lucide-react';
+import { Brain, BookOpen, Users, Calendar } from 'lucide-react';
 
 interface NavbarProps {
   onNavigateToInterviewPrep: () => void;
   onNavigateToNetworking: () => void;
   onNavigateToTimelines: () => void;
-  onNavigateToInternships: () => void;
   onNavigateToHome?: () => void;
   currentPage?: string;
 }
@@ -14,7 +13,6 @@ const Navbar: React.FC<NavbarProps> = ({
   onNavigateToInterviewPrep,
   onNavigateToNetworking,
   onNavigateToTimelines,
-  onNavigateToInternships,
   onNavigateToHome,
   currentPage
 }) => {
@@ -68,13 +66,6 @@ const Navbar: React.FC<NavbarProps> = ({
             >
               <Calendar className="w-4 h-4 mr-2" />
               Recruiting Timelines
-            </button>
-            <button
-              onClick={onNavigateToInternships}
-              className={getNavItemClass('internships')}
-            >
-              <Briefcase className="w-4 h-4 mr-2" />
-              Job Opportunities
             </button>
           </div>
         </div>

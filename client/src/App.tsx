@@ -83,7 +83,6 @@ function App() {
           onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
           onNavigateToNetworking={() => setCurrentPage('networking')}
           onNavigateToTimelines={() => setCurrentPage('timelines')}
-          onNavigateToInternships={() => setCurrentPage('internships')}
           onNavigateToHome={() => setCurrentPage('home')}
         />
       ) : currentPage === 'networking' ? (
@@ -92,7 +91,6 @@ function App() {
               onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
               onNavigateToNetworking={() => setCurrentPage('networking')}
               onNavigateToTimelines={() => setCurrentPage('timelines')}
-              onNavigateToInternships={() => setCurrentPage('internships')}
               onNavigateToHome={() => setCurrentPage('home')}
             />
           ) : currentPage === 'timelines' ? (
@@ -112,17 +110,16 @@ function App() {
               onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
               onNavigateToNetworking={() => setCurrentPage('networking')}
               onNavigateToTimelines={() => setCurrentPage('timelines')}
-              onNavigateToInternships={() => setCurrentPage('internships')}
               onNavigateToHome={() => setCurrentPage('home')}
             />
           ) : !session ? (
             <WelcomeScreen 
               onStartInterview={startInterview}
-              onNavigateToInternships={() => setCurrentPage('internships')}
               onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
               onNavigateToNetworking={() => setCurrentPage('networking')}
               onNavigateToTimelines={() => setCurrentPage('timelines')}
               onNavigateToQuestionBank={() => setCurrentPage('question-bank')}
+              onNavigateToHome={() => setCurrentPage('home')}
             />
           ) : (
             <VideoCallInterview

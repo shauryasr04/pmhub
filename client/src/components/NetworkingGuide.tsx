@@ -23,7 +23,6 @@ interface NetworkingGuideProps {
   onNavigateToInterviewPrep: () => void;
   onNavigateToNetworking: () => void;
   onNavigateToTimelines: () => void;
-  onNavigateToInternships: () => void;
   onNavigateToHome: () => void;
 }
 
@@ -32,7 +31,6 @@ const NetworkingGuide: React.FC<NetworkingGuideProps> = ({
   onNavigateToInterviewPrep, 
   onNavigateToNetworking, 
   onNavigateToTimelines, 
-  onNavigateToInternships,
   onNavigateToHome
 }) => {
   const [activeTab, setActiveTab] = useState<'internship' | 'newgrad'>('internship');
@@ -176,7 +174,6 @@ const NetworkingGuide: React.FC<NetworkingGuideProps> = ({
         onNavigateToInterviewPrep={onNavigateToInterviewPrep}
         onNavigateToNetworking={onNavigateToNetworking}
         onNavigateToTimelines={onNavigateToTimelines}
-        onNavigateToInternships={onNavigateToInternships}
         onNavigateToHome={onNavigateToHome}
         currentPage="networking"
       />

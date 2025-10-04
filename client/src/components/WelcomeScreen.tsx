@@ -5,20 +5,20 @@ import Navbar from './Navbar';
 
 interface WelcomeScreenProps {
   onStartInterview: (settings: InterviewSettings) => void;
-  onNavigateToInternships: () => void;
   onNavigateToInterviewPrep: () => void;
   onNavigateToNetworking: () => void;
   onNavigateToTimelines: () => void;
   onNavigateToQuestionBank: () => void;
+  onNavigateToHome: () => void;
 }
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ 
   onStartInterview, 
-  onNavigateToInternships, 
   onNavigateToInterviewPrep, 
   onNavigateToNetworking, 
   onNavigateToTimelines,
-  onNavigateToQuestionBank
+  onNavigateToQuestionBank,
+  onNavigateToHome
 }) => {
   const [settings, setSettings] = useState<InterviewSettings>({
     category: 'all',
@@ -60,8 +60,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         onNavigateToInterviewPrep={onNavigateToInterviewPrep}
         onNavigateToNetworking={onNavigateToNetworking}
         onNavigateToTimelines={onNavigateToTimelines}
-        onNavigateToInternships={onNavigateToInternships}
-        onNavigateToHome={() => {}} // Already on home page
+        onNavigateToHome={onNavigateToHome}
         currentPage="home"
       />
 
