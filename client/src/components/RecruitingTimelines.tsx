@@ -35,7 +35,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "Early September", 
         salary: "$113-161K", 
         status: "Open",
-        difficulty: "Very High",
         program: "APM Program"
       },
       { 
@@ -44,7 +43,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "Mid September", 
         salary: "Competitive", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -53,7 +51,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "Late September", 
         salary: "Competitive", 
         status: "Open",
-        difficulty: "Very High",
         program: "APM Program"
       },
       { 
@@ -62,7 +59,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "October 31", 
         salary: "$140K", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -71,7 +67,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "October 31", 
         salary: "$142K", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -80,7 +75,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "November 1", 
         salary: "$116-176K", 
         status: "Open",
-        difficulty: "High",
         program: "PM Program"
       },
       { 
@@ -89,7 +83,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "November 15", 
         salary: "$133-150K", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -98,7 +91,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "November 30", 
         salary: "$99-148K", 
         status: "Open",
-        difficulty: "Medium",
         program: "Entry Level PM"
       },
       { 
@@ -107,7 +99,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "December 1", 
         salary: "$125-135K", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -116,7 +107,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "December 15", 
         salary: "Competitive", 
         status: "Open",
-        difficulty: "Medium",
         program: "APM Program"
       }
     ]
@@ -130,7 +120,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "February 1", 
         salary: "$113-161K", 
         status: "Open",
-        difficulty: "Very High",
         program: "APM Program"
       },
       { 
@@ -139,7 +128,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "February 15", 
         salary: "Competitive", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -148,7 +136,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "February 28", 
         salary: "Competitive", 
         status: "Open",
-        difficulty: "Very High",
         program: "RPM Program"
       },
       { 
@@ -157,7 +144,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "March 31", 
         salary: "$140K", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -166,7 +152,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "March 31", 
         salary: "$142K", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -175,7 +160,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "April 1", 
         salary: "$116-176K", 
         status: "Open",
-        difficulty: "High",
         program: "PM Program"
       },
       { 
@@ -184,7 +168,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "April 15", 
         salary: "$133-150K", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -193,7 +176,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "April 30", 
         salary: "$99-148K", 
         status: "Open",
-        difficulty: "Medium",
         program: "Entry Level PM"
       },
       { 
@@ -202,7 +184,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "May 1", 
         salary: "$125-135K", 
         status: "Open",
-        difficulty: "High",
         program: "APM Program"
       },
       { 
@@ -211,7 +192,6 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "May 15", 
         salary: "Competitive", 
         status: "Open",
-        difficulty: "Medium",
         program: "APM Program"
       }
     ]
@@ -297,18 +277,9 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {currentData.companies.map((company, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    <span className="text-3xl mr-3">{company.logo}</span>
-                    <h3 className="text-lg font-semibold text-gray-900">{company.name}</h3>
-                  </div>
-                  <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                    company.difficulty === 'Very High' ? 'bg-red-100 text-red-800' :
-                    company.difficulty === 'High' ? 'bg-orange-100 text-orange-800' :
-                    'bg-green-100 text-green-800'
-                  }`}>
-                    {company.difficulty}
-                  </span>
+                <div className="flex items-center mb-4">
+                  <span className="text-3xl mr-3">{company.logo}</span>
+                  <h3 className="text-lg font-semibold text-gray-900">{company.name}</h3>
                 </div>
                 
                 <div className="space-y-3">
