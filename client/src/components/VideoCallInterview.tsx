@@ -172,6 +172,11 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
         }),
       });
 
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || `HTTP ${response.status}`);
+      }
+
       const data = await response.json();
       
       if (data.sessionId) {
@@ -185,7 +190,11 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       speakText(data.response);
     } catch (error) {
       console.error('Error starting conversation:', error);
-      setError('Failed to start interview. Please try again.');
+      if (error.message.includes('OpenAI API not configured')) {
+        setError('OpenAI API key not configured. Please set OPENAI_API_KEY in the server .env file to enable AI features.');
+      } else {
+        setError('Failed to start interview. Please try again.');
+      }
     } finally {
       setIsProcessing(false);
     }
@@ -211,8 +220,13 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
         }),
       });
 
-      const data = await response.json();
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || `HTTP ${response.status}`);
+      }
 
+      const data = await response.json();
+      
       setCurrentQuestion(data.response);
       setConversationHistory([...updatedHistory, {role: 'assistant', content: data.response}]);
       
@@ -220,7 +234,11 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       speakText(data.response);
     } catch (error) {
       console.error('Error processing voice input:', error);
-      setError('Failed to process your response. Please try again.');
+      if (error.message.includes('OpenAI API not configured')) {
+        setError('OpenAI API key not configured. Please set OPENAI_API_KEY in the server .env file to enable AI features.');
+      } else {
+        setError('Failed to process your response. Please try again.');
+      }
     } finally {
       setIsProcessing(false);
     }
