@@ -39,111 +39,118 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
     months: [
       {
         month: "August",
-        phase: "Early Preparation",
+        phase: "Early Preparation & Research",
         tasks: [
-          "Research target companies and PM roles",
-          "Update resume and LinkedIn profile",
-          "Start building PM knowledge base",
-          "Begin networking with PMs",
-          "Work on side projects to build portfolio"
+          "Research 2025-2026 APM internship programs",
+          "Identify target companies from APM Season listings",
+          "Update resume with PM-relevant experience",
+          "Start building product thinking skills",
+          "Join PM communities and follow industry leaders"
         ],
         deadlines: [],
         tips: [
-          "Focus on understanding what PMs actually do",
-          "Start following PM blogs and podcasts",
-          "Join PM communities and Slack groups"
+          "Focus on understanding what APMs actually do vs PMs",
+          "Study successful APM programs at top tech companies",
+          "Start following APM Season for latest opportunities"
         ]
       },
       {
         month: "September",
-        phase: "Application Season Begins",
+        phase: "Application Season Opens",
         tasks: [
-          "Apply to early application programs",
-          "Attend career fairs and company info sessions",
-          "Reach out to PMs for informational interviews",
-          "Practice behavioral interview questions",
-          "Prepare elevator pitch"
+          "Apply to early APM programs (Google, Microsoft, Meta)",
+          "Attend company info sessions and career fairs",
+          "Reach out to current APMs for informational interviews",
+          "Practice behavioral and product thinking questions",
+          "Prepare compelling cover letters"
         ],
         deadlines: [
-          "Google STEP Program (Sept 1)",
-          "Microsoft Explore Program (Sept 15)",
-          "Meta University (Sept 30)"
+          "Google APM Program (Early Sept)",
+          "Microsoft APM Program (Mid Sept)",
+          "Meta APM Program (Late Sept)"
         ],
         tips: [
-          "Apply to 20+ companies for better odds",
-          "Customize each application",
-          "Track applications in a spreadsheet"
+          "Apply to 15-20 companies for better odds",
+          "Customize each application for company culture",
+          "Track applications using APM Season as reference"
         ]
       },
       {
         month: "October",
         phase: "Peak Application Period",
         tasks: [
-          "Continue mass applications",
-          "Prepare for phone screens",
-          "Practice case study frameworks",
-          "Build relationships with recruiters",
-          "Attend company events and workshops"
+          "Apply to remaining APM programs",
+          "Prepare for phone screens and initial interviews",
+          "Practice case study frameworks (CIRCLES, AARM)",
+          "Build relationships with recruiters and current APMs",
+          "Attend company events and PM workshops"
         ],
         deadlines: [
-          "Amazon Internship Program (Oct 1)",
-          "Apple Internship Program (Oct 15)",
-          "Stripe Internship Program (Oct 31)"
+          "Amazon APM Program (Oct 1)",
+          "Apple APM Program (Oct 15)",
+          "Figma APM Program (Oct 31)",
+          "Roblox APM Program (Oct 31)"
         ],
         tips: [
-          "Most applications are due this month",
-          "Focus on quality over quantity",
-          "Prepare for technical PM questions"
+          "Most APM applications are due this month",
+          "Focus on demonstrating product sense and leadership",
+          "Prepare for technical PM questions and system design"
         ]
       },
       {
         month: "November",
-        phase: "Interview Preparation",
+        phase: "Interview Preparation & Execution",
         tasks: [
-          "Mock interviews with PMs",
-          "Deep dive into target companies",
-          "Practice product design questions",
-          "Prepare questions for interviewers",
-          "Finalize portfolio and case studies"
+          "Mock interviews with current APMs and PMs",
+          "Deep dive into target companies' products and culture",
+          "Practice product design and strategy questions",
+          "Prepare thoughtful questions for interviewers",
+          "Finalize portfolio with product case studies"
         ],
         deadlines: [
-          "Uber Internship Program (Nov 1)",
-          "Airbnb Internship Program (Nov 15)"
+          "TikTok APM Program (Nov 1)",
+          "Databricks APM Program (Nov 15)",
+          "IBM APM Program (Nov 30)"
         ],
         tips: [
-          "Most interviews happen this month",
-          "Practice with real PMs, not just friends",
-          "Study company-specific products and culture"
+          "Most APM interviews happen this month",
+          "Practice with real APMs, not just friends",
+          "Study company-specific products and recent launches"
         ]
       },
       {
         month: "December",
-        phase: "Interview Season",
+        phase: "Final Interviews & Decisions",
         tasks: [
-          "Final round interviews",
-          "Negotiate offers",
-          "Make final decisions",
-          "Thank you notes to interviewers",
-          "Plan for next semester"
+          "Final round interviews with senior PMs and executives",
+          "Negotiate offers and understand program details",
+          "Make final decisions between offers",
+          "Send thank you notes to all interviewers",
+          "Plan for summer internship experience"
         ],
         deadlines: [
-          "Most offers extended by Dec 15",
-          "Decision deadlines typically Dec 20-31"
+          "Duolingo APM Program (Dec 1)",
+          "Arcade APM Program (Dec 15)",
+          "Most programs close by Dec 31"
         ],
         tips: [
-          "Be prepared to make quick decisions",
-          "Don't be afraid to negotiate",
-          "Keep other options open until you sign"
+          "Be prepared for last-minute interviews",
+          "Have backup options ready",
+          "Celebrate your hard work and prepare for success!"
         ]
       }
     ],
     keyCompanies: [
-      { name: "Google", timeline: "Aug 1 - Dec 15", difficulty: "Very High", notes: "STEP program for underclassmen" },
-      { name: "Microsoft", timeline: "Sept 1 - Dec 20", difficulty: "High", notes: "Explore program for sophomores" },
-      { name: "Meta", timeline: "Sept 1 - Dec 10", difficulty: "Very High", notes: "University program" },
-      { name: "Amazon", timeline: "Oct 1 - Dec 31", difficulty: "High", notes: "Large program, good for first-time interns" },
-      { name: "Apple", timeline: "Oct 15 - Jan 15", difficulty: "Very High", notes: "Highly selective" },
-      { name: "Stripe", timeline: "Oct 1 - Dec 20", difficulty: "High", notes: "Fast-growing, great culture" }
+      { name: "Google", timeline: "Aug 1 - Dec 15", difficulty: "Very High", notes: "APM Program - $113-161K", salary: "$113-161K" },
+      { name: "Microsoft", timeline: "Sept 1 - Dec 20", difficulty: "High", notes: "APM Program", salary: "Competitive" },
+      { name: "Meta", timeline: "Sept 1 - Dec 10", difficulty: "Very High", notes: "APM Program", salary: "Competitive" },
+      { name: "Figma", timeline: "Oct 1 - Dec 31", difficulty: "High", notes: "APM Program - $140K", salary: "$140K" },
+      { name: "Roblox", timeline: "Oct 1 - Dec 31", difficulty: "High", notes: "APM Program - $142K", salary: "$142K" },
+      { name: "TikTok", timeline: "Nov 1 - Jan 15", difficulty: "High", notes: "PM Program - $116-176K", salary: "$116-176K" },
+      { name: "Databricks", timeline: "Nov 1 - Jan 15", difficulty: "High", notes: "APM Program - $133-150K", salary: "$133-150K" },
+      { name: "IBM", timeline: "Nov 1 - Jan 15", difficulty: "Medium", notes: "Entry Level PM - $99-148K", salary: "$99-148K" },
+      { name: "Duolingo", timeline: "Dec 1 - Feb 15", difficulty: "High", notes: "APM Program - $125-135K", salary: "$125-135K" },
+      { name: "Arcade", timeline: "Dec 1 - Feb 15", difficulty: "Medium", notes: "APM Program", salary: "Competitive" }
     ]
   };
 
@@ -151,111 +158,118 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
     months: [
       {
         month: "January",
-        phase: "Early Preparation",
+        phase: "Early Preparation & Research",
         tasks: [
-          "Research full-time PM roles",
-          "Update resume with senior year projects",
-          "Build comprehensive PM portfolio",
-          "Start networking with senior PMs",
-          "Prepare for behavioral interviews"
+          "Research 2025-2026 APM full-time programs",
+          "Identify target companies from APM Season listings",
+          "Update resume with senior year projects and PM experience",
+          "Build comprehensive PM portfolio with case studies",
+          "Start networking with senior PMs and APM alumni"
         ],
         deadlines: [],
         tips: [
-          "Focus on leadership and impact stories",
+          "Focus on leadership and impact stories from college",
           "Build relationships with PMs at target companies",
-          "Start thinking about location preferences"
+          "Start thinking about location preferences and company culture"
         ]
       },
       {
         month: "February",
         phase: "Application Season Begins",
         tasks: [
-          "Apply to early full-time programs",
-          "Attend company info sessions",
-          "Reach out to alumni in PM roles",
-          "Practice case study interviews",
-          "Prepare for technical PM questions"
+          "Apply to early APM full-time programs",
+          "Attend company info sessions and career fairs",
+          "Reach out to APM alumni for informational interviews",
+          "Practice case study interviews and product thinking",
+          "Prepare for technical PM questions and system design"
         ],
         deadlines: [
           "Google APM Program (Feb 1)",
-          "Microsoft PM Program (Feb 15)",
+          "Microsoft APM Program (Feb 15)",
           "Meta RPM Program (Feb 28)"
         ],
         tips: [
-          "APM programs are highly competitive",
-          "Focus on demonstrating leadership potential",
-          "Prepare for system design questions"
+          "APM programs are highly competitive - apply early",
+          "Focus on demonstrating leadership potential and product sense",
+          "Prepare for both technical and behavioral rounds"
         ]
       },
       {
         month: "March",
         phase: "Peak Application Period",
         tasks: [
-          "Mass applications to PM roles",
-          "Prepare for phone screens",
-          "Practice product strategy questions",
-          "Build relationships with recruiters",
-          "Attend PM conferences and events"
+          "Mass applications to APM and PM roles",
+          "Prepare for phone screens and initial interviews",
+          "Practice product strategy and leadership questions",
+          "Build relationships with recruiters and current APMs",
+          "Attend PM conferences and company events"
         ],
         deadlines: [
-          "Amazon PM Program (Mar 1)",
-          "Apple PM Program (Mar 15)",
-          "Uber PM Program (Mar 31)"
+          "Amazon APM Program (Mar 1)",
+          "Apple APM Program (Mar 15)",
+          "Figma APM Program (Mar 31)",
+          "Roblox APM Program (Mar 31)"
         ],
         tips: [
-          "Most applications are due this month",
-          "Focus on companies that align with your interests",
-          "Prepare for both technical and behavioral rounds"
-        ]
-      },
-      {
-        month: "April",
-        phase: "Interview Preparation",
-        tasks: [
-          "Mock interviews with senior PMs",
-          "Deep dive into company products and strategy",
-          "Practice leadership scenarios",
-          "Prepare questions about team and culture",
-          "Finalize case study presentations"
-        ],
-        deadlines: [
-          "Stripe PM Program (Apr 1)",
-          "Airbnb PM Program (Apr 15)"
-        ],
-        tips: [
-          "Most interviews happen this month",
-          "Practice with PMs from your target companies",
+          "Most APM applications are due this month",
+          "Focus on companies that align with your interests and values",
           "Prepare for both individual and panel interviews"
         ]
       },
       {
-        month: "May",
-        phase: "Interview Season",
+        month: "April",
+        phase: "Interview Preparation & Execution",
         tasks: [
-          "Final round interviews",
-          "Negotiate compensation packages",
-          "Make final decisions",
-          "Thank you notes to all interviewers",
-          "Plan for graduation and start dates"
+          "Mock interviews with senior PMs and APM alumni",
+          "Deep dive into company products, strategy, and culture",
+          "Practice leadership scenarios and product design questions",
+          "Prepare thoughtful questions about team and growth opportunities",
+          "Finalize case study presentations and portfolio"
         ],
         deadlines: [
-          "Most offers extended by May 15",
-          "Decision deadlines typically May 20-31"
+          "TikTok APM Program (Apr 1)",
+          "Databricks APM Program (Apr 15)",
+          "IBM APM Program (Apr 30)"
+        ],
+        tips: [
+          "Most APM interviews happen this month",
+          "Practice with PMs from your target companies",
+          "Study company-specific products and recent strategic moves"
+        ]
+      },
+      {
+        month: "May",
+        phase: "Final Interviews & Decisions",
+        tasks: [
+          "Final round interviews with senior PMs and executives",
+          "Negotiate compensation packages and understand program details",
+          "Make final decisions between offers",
+          "Send thank you notes to all interviewers",
+          "Plan for post-graduation start and relocation"
+        ],
+        deadlines: [
+          "Duolingo APM Program (May 1)",
+          "Arcade APM Program (May 15)",
+          "Most programs close by May 31"
         ],
         tips: [
           "Be prepared to make quick decisions",
-          "Negotiate salary, equity, and benefits",
-          "Consider long-term career growth potential"
+          "Consider total compensation, growth opportunities, and culture",
+          "Think about long-term career growth and learning opportunities"
         ]
       }
     ],
     keyCompanies: [
-      { name: "Google", timeline: "Feb 1 - May 15", difficulty: "Very High", notes: "APM program, highly selective" },
-      { name: "Microsoft", timeline: "Feb 15 - May 20", difficulty: "High", notes: "PM program, good for new grads" },
-      { name: "Meta", timeline: "Feb 1 - May 10", difficulty: "Very High", notes: "RPM program, fast-paced" },
-      { name: "Amazon", timeline: "Mar 1 - May 31", difficulty: "High", notes: "Large program, good growth opportunities" },
-      { name: "Apple", timeline: "Mar 15 - Jun 15", difficulty: "Very High", notes: "Highly selective, design-focused" },
-      { name: "Uber", timeline: "Mar 1 - May 20", difficulty: "High", notes: "Fast-growing, impact-focused" }
+      { name: "Google", timeline: "Jan 1 - May 15", difficulty: "Very High", notes: "APM Program - $113-161K", salary: "$113-161K" },
+      { name: "Microsoft", timeline: "Feb 1 - May 20", difficulty: "High", notes: "APM Program", salary: "Competitive" },
+      { name: "Meta", timeline: "Feb 1 - May 10", difficulty: "Very High", notes: "RPM Program", salary: "Competitive" },
+      { name: "Figma", timeline: "Mar 1 - May 31", difficulty: "High", notes: "APM Program - $140K", salary: "$140K" },
+      { name: "Roblox", timeline: "Mar 1 - May 31", difficulty: "High", notes: "APM Program - $142K", salary: "$142K" },
+      { name: "TikTok", timeline: "Apr 1 - Jun 15", difficulty: "High", notes: "PM Program - $116-176K", salary: "$116-176K" },
+      { name: "Databricks", timeline: "Apr 1 - Jun 15", difficulty: "High", notes: "APM Program - $133-150K", salary: "$133-150K" },
+      { name: "IBM", timeline: "Apr 1 - Jun 15", difficulty: "Medium", notes: "Entry Level PM - $99-148K", salary: "$99-148K" },
+      { name: "Duolingo", timeline: "May 1 - Jul 15", difficulty: "High", notes: "APM Program - $125-135K", salary: "$125-135K" },
+      { name: "Arcade", timeline: "May 1 - Jul 15", difficulty: "Medium", notes: "APM Program", salary: "Competitive" }
     ]
   };
 
@@ -288,9 +302,12 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
               </button>
             )}
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">PM Recruiting Timelines</h1>
+              <h1 className="text-3xl font-bold text-gray-900">APM Recruiting Timelines</h1>
               <p className="text-gray-600 mt-2">
-                Complete timeline for PM internship and new grad recruiting
+                Complete timeline for APM internship and new grad recruiting based on current 2025-2026 opportunities
+              </p>
+              <p className="text-sm text-blue-600 mt-1">
+                Data sourced from <a href="https://www.apmseason.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-800">APM Season</a> - the #1 place for APM opportunities
               </p>
             </div>
           </div>
