@@ -408,10 +408,6 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
                   <div className="absolute -inset-4 rounded-full border-4 border-green-400 animate-pulse"></div>
                 )}
                 
-                {/* Processing indicator */}
-                {isProcessing && (
-                  <div className="absolute -inset-2 rounded-full border-2 border-yellow-400 animate-spin"></div>
-                )}
                 
                 {/* Waiting indicator */}
                 {isWaitingForUser && (
