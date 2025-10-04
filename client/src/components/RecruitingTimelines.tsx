@@ -13,12 +13,23 @@ import {
   MapPin,
   ExternalLink
 } from 'lucide-react';
+import Navbar from './Navbar';
 
 interface RecruitingTimelinesProps {
   onBack?: () => void;
+  onNavigateToInterviewPrep: () => void;
+  onNavigateToNetworking: () => void;
+  onNavigateToTimelines: () => void;
+  onNavigateToInternships: () => void;
 }
 
-const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({ onBack }) => {
+const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({ 
+  onBack, 
+  onNavigateToInterviewPrep, 
+  onNavigateToNetworking, 
+  onNavigateToTimelines, 
+  onNavigateToInternships 
+}) => {
   const [activeTab, setActiveTab] = useState<'internship' | 'newgrad'>('internship');
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
 
@@ -251,6 +262,15 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({ onBack }) => 
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Navbar */}
+      <Navbar
+        onNavigateToInterviewPrep={onNavigateToInterviewPrep}
+        onNavigateToNetworking={onNavigateToNetworking}
+        onNavigateToTimelines={onNavigateToTimelines}
+        onNavigateToInternships={onNavigateToInternships}
+        currentPage="timelines"
+      />
+      
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

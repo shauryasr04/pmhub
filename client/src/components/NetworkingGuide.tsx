@@ -16,12 +16,23 @@ import {
   Lightbulb,
   ExternalLink
 } from 'lucide-react';
+import Navbar from './Navbar';
 
 interface NetworkingGuideProps {
   onBack?: () => void;
+  onNavigateToInterviewPrep: () => void;
+  onNavigateToNetworking: () => void;
+  onNavigateToTimelines: () => void;
+  onNavigateToInternships: () => void;
 }
 
-const NetworkingGuide: React.FC<NetworkingGuideProps> = ({ onBack }) => {
+const NetworkingGuide: React.FC<NetworkingGuideProps> = ({ 
+  onBack, 
+  onNavigateToInterviewPrep, 
+  onNavigateToNetworking, 
+  onNavigateToTimelines, 
+  onNavigateToInternships 
+}) => {
   const [activeTab, setActiveTab] = useState<'internship' | 'newgrad'>('internship');
 
   const internshipNetworking = {
@@ -158,6 +169,15 @@ const NetworkingGuide: React.FC<NetworkingGuideProps> = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Navbar */}
+      <Navbar
+        onNavigateToInterviewPrep={onNavigateToInterviewPrep}
+        onNavigateToNetworking={onNavigateToNetworking}
+        onNavigateToTimelines={onNavigateToTimelines}
+        onNavigateToInternships={onNavigateToInternships}
+        currentPage="networking"
+      />
+      
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

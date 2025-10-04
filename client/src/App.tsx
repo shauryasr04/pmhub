@@ -85,14 +85,30 @@ function App() {
           onNavigateToInternships={() => setCurrentPage('internships')}
         />
       ) : currentPage === 'networking' ? (
-            <NetworkingGuide onBack={() => setCurrentPage('home')} />
+            <NetworkingGuide 
+              onBack={() => setCurrentPage('home')} 
+              onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
+              onNavigateToNetworking={() => setCurrentPage('networking')}
+              onNavigateToTimelines={() => setCurrentPage('timelines')}
+              onNavigateToInternships={() => setCurrentPage('internships')}
+            />
           ) : currentPage === 'timelines' ? (
-            <RecruitingTimelines onBack={() => setCurrentPage('home')} />
+            <RecruitingTimelines 
+              onBack={() => setCurrentPage('home')} 
+              onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
+              onNavigateToNetworking={() => setCurrentPage('networking')}
+              onNavigateToTimelines={() => setCurrentPage('timelines')}
+              onNavigateToInternships={() => setCurrentPage('internships')}
+            />
           ) : currentPage === 'question-bank' ? (
             <QuestionBank 
               onBack={() => setCurrentPage('home')} 
               onSelectQuestion={handleQuestionSelect}
               onStartInterview={startInterview}
+              onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
+              onNavigateToNetworking={() => setCurrentPage('networking')}
+              onNavigateToTimelines={() => setCurrentPage('timelines')}
+              onNavigateToInternships={() => setCurrentPage('internships')}
             />
           ) : !session ? (
             <WelcomeScreen 

@@ -14,6 +14,7 @@ import {
   Star,
   RefreshCw
 } from 'lucide-react';
+import Navbar from './Navbar';
 
 interface Question {
   id: string;
@@ -33,9 +34,21 @@ interface QuestionBankProps {
   onBack?: () => void;
   onSelectQuestion: (question: Question) => void;
   onStartInterview: (settings: { category: string; level: string; duration: number; question: Question }) => void;
+  onNavigateToInterviewPrep: () => void;
+  onNavigateToNetworking: () => void;
+  onNavigateToTimelines: () => void;
+  onNavigateToInternships: () => void;
 }
 
-const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, onStartInterview }) => {
+const QuestionBank: React.FC<QuestionBankProps> = ({ 
+  onBack, 
+  onSelectQuestion, 
+  onStartInterview, 
+  onNavigateToInterviewPrep, 
+  onNavigateToNetworking, 
+  onNavigateToTimelines, 
+  onNavigateToInternships 
+}) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
@@ -331,6 +344,15 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Navbar */}
+      <Navbar
+        onNavigateToInterviewPrep={onNavigateToInterviewPrep}
+        onNavigateToNetworking={onNavigateToNetworking}
+        onNavigateToTimelines={onNavigateToTimelines}
+        onNavigateToInternships={onNavigateToInternships}
+        currentPage="question-bank"
+      />
+      
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
