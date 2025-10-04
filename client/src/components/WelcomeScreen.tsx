@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Video, Brain, Clock, Play, Briefcase, BookOpen, Users, Calendar, Target } from 'lucide-react';
+import { Brain, Clock, Play, Briefcase, BookOpen, Users, Calendar, Target } from 'lucide-react';
 import { InterviewSettings } from '../types';
 
 interface WelcomeScreenProps {
@@ -43,7 +43,6 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   ];
 
   const durations = [
-    { value: 15, label: '15 minutes' },
     { value: 30, label: '30 minutes' },
     { value: 45, label: '45 minutes' },
     { value: 60, label: '1 hour' }
@@ -63,48 +62,14 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               <Brain className="w-12 h-12 text-white" />
             </div>
           </div>
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            PM Hub
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Welcome to PM Hub
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Your all-in-one platform for Product Management recruiting success. 
-            From interview prep to networking, we've got you covered.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Ready to start your PM interview practice? Configure your settings below and choose how you'd like to begin.
           </p>
         </div>
 
-        {/* Features */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <Video className="w-8 h-8 text-primary-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">AI Interview Practice</h3>
-            <p className="text-gray-600">Practice with AI-powered video interviews that feel like real PM interviews</p>
-          </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-2 border-indigo-200">
-            <Target className="w-8 h-8 text-indigo-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Question Bank</h3>
-            <p className="text-gray-600">Choose specific questions to practice with AI feedback and detailed analysis</p>
-          </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <BookOpen className="w-8 h-8 text-primary-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Interview Prep Guide</h3>
-            <p className="text-gray-600">Comprehensive guides for internship and new grad PM interviews</p>
-          </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <Users className="w-8 h-8 text-primary-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Networking Guide</h3>
-            <p className="text-gray-600">Learn how to network effectively in the PM community</p>
-          </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <Calendar className="w-8 h-8 text-primary-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Recruiting Timelines</h3>
-            <p className="text-gray-600">Stay on track with detailed PM recruiting timelines</p>
-          </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <Briefcase className="w-8 h-8 text-primary-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Job Opportunities</h3>
-            <p className="text-gray-600">Find PM internships and new grad positions</p>
-          </div>
-        </div>
 
         {/* Settings */}
         <div className="bg-white rounded-lg shadow-lg p-8">
