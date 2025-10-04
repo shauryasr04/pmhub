@@ -342,7 +342,6 @@ const InternshipsPage: React.FC<InternshipsPageProps> = ({
         onNavigateToInterviewPrep={onNavigateToInterviewPrep}
         onNavigateToNetworking={onNavigateToNetworking}
         onNavigateToTimelines={onNavigateToTimelines}
-        onNavigateToInternships={onNavigateToInternships}
         onNavigateToHome={onNavigateToHome}
         currentPage="internships"
       />
