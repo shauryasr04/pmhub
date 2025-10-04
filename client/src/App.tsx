@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import LandingPage from './components/LandingPage';
 import VideoCallInterview from './components/VideoCallInterview';
 import WelcomeScreen from './components/WelcomeScreen';
 import InternshipsPage from './components/InternshipsPage';
@@ -9,6 +10,7 @@ import QuestionBank from './components/QuestionBank';
 import { InterviewSession } from './types';
 
 function App() {
+  const [showLandingPage, setShowLandingPage] = useState(true);
   const [session, setSession] = useState<InterviewSession | null>(null);
   const [currentPage, setCurrentPage] = useState<'home' | 'interview' | 'internships' | 'interview-prep' | 'networking' | 'timelines' | 'question-bank'>('home');
   const [selectedQuestion, setSelectedQuestion] = useState<any>(null);
@@ -56,37 +58,47 @@ function App() {
     // This will be handled by the onStartInterview callback
   };
 
+  const enterApp = () => {
+    setShowLandingPage(false);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {currentPage === 'internships' ? (
-        <InternshipsPage onBack={() => setCurrentPage('home')} />
-      ) : currentPage === 'interview-prep' ? (
-        <InterviewPrepGuide onBack={() => setCurrentPage('home')} />
-      ) : currentPage === 'networking' ? (
-        <NetworkingGuide onBack={() => setCurrentPage('home')} />
-      ) : currentPage === 'timelines' ? (
-        <RecruitingTimelines onBack={() => setCurrentPage('home')} />
-      ) : currentPage === 'question-bank' ? (
-        <QuestionBank 
-          onBack={() => setCurrentPage('home')} 
-          onSelectQuestion={handleQuestionSelect}
-          onStartInterview={startInterview}
-        />
-      ) : !session ? (
-        <WelcomeScreen 
-          onStartInterview={startInterview}
-          onNavigateToInternships={() => setCurrentPage('internships')}
-          onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
-          onNavigateToNetworking={() => setCurrentPage('networking')}
-          onNavigateToTimelines={() => setCurrentPage('timelines')}
-          onNavigateToQuestionBank={() => setCurrentPage('question-bank')}
-        />
+    <div className="min-h-screen">
+      {showLandingPage ? (
+        <LandingPage onEnterApp={enterApp} />
       ) : (
-        <VideoCallInterview
-          session={session}
-          onEndInterview={endInterview}
-          onResetInterview={resetInterview}
-        />
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+          {currentPage === 'internships' ? (
+            <InternshipsPage onBack={() => setCurrentPage('home')} />
+          ) : currentPage === 'interview-prep' ? (
+            <InterviewPrepGuide onBack={() => setCurrentPage('home')} />
+          ) : currentPage === 'networking' ? (
+            <NetworkingGuide onBack={() => setCurrentPage('home')} />
+          ) : currentPage === 'timelines' ? (
+            <RecruitingTimelines onBack={() => setCurrentPage('home')} />
+          ) : currentPage === 'question-bank' ? (
+            <QuestionBank 
+              onBack={() => setCurrentPage('home')} 
+              onSelectQuestion={handleQuestionSelect}
+              onStartInterview={startInterview}
+            />
+          ) : !session ? (
+            <WelcomeScreen 
+              onStartInterview={startInterview}
+              onNavigateToInternships={() => setCurrentPage('internships')}
+              onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
+              onNavigateToNetworking={() => setCurrentPage('networking')}
+              onNavigateToTimelines={() => setCurrentPage('timelines')}
+              onNavigateToQuestionBank={() => setCurrentPage('question-bank')}
+            />
+          ) : (
+            <VideoCallInterview
+              session={session}
+              onEndInterview={endInterview}
+              onResetInterview={resetInterview}
+            />
+          )}
+        </div>
       )}
     </div>
   );
