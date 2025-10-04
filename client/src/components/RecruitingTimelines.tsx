@@ -4,7 +4,8 @@ import {
   Clock, 
   Users,
   GraduationCap,
-  TrendingUp
+  TrendingUp,
+  ExternalLink
 } from 'lucide-react';
 import Navbar from './Navbar';
 
@@ -35,7 +36,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "Early September", 
         salary: "$113-161K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://careers.google.com/jobs/results/?q=associate%20product%20manager"
       },
       { 
         name: "Microsoft", 
@@ -43,7 +45,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "Mid September", 
         salary: "Competitive", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://careers.microsoft.com/us/en/search-results?keywords=associate%20product%20manager"
       },
       { 
         name: "Meta", 
@@ -51,7 +54,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "Late September", 
         salary: "Competitive", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://www.metacareers.com/jobs/?q=associate%20product%20manager"
       },
       { 
         name: "Figma", 
@@ -59,7 +63,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "October 31", 
         salary: "$140K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://www.figma.com/careers/#openings"
       },
       { 
         name: "Roblox", 
@@ -67,7 +72,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "October 31", 
         salary: "$142K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://careers.roblox.com/jobs?keywords=associate%20product%20manager"
       },
       { 
         name: "TikTok", 
@@ -75,7 +81,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "November 1", 
         salary: "$116-176K", 
         status: "Open",
-        program: "PM Program"
+        program: "PM Program",
+        applicationUrl: "https://careers.tiktok.com/position?keywords=product%20manager"
       },
       { 
         name: "Databricks", 
@@ -83,7 +90,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "November 15", 
         salary: "$133-150K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://www.databricks.com/company/careers/open-positions?keywords=associate%20product%20manager"
       },
       { 
         name: "IBM", 
@@ -91,7 +99,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "November 30", 
         salary: "$99-148K", 
         status: "Open",
-        program: "Entry Level PM"
+        program: "Entry Level PM",
+        applicationUrl: "https://www.ibm.com/careers/search?q=product%20manager"
       },
       { 
         name: "Duolingo", 
@@ -99,7 +108,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "December 1", 
         salary: "$125-135K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://careers.duolingo.com/jobs?keywords=associate%20product%20manager"
       },
       { 
         name: "Arcade", 
@@ -107,7 +117,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "December 15", 
         salary: "Competitive", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://jobs.lever.co/Arcade"
       }
     ]
   };
@@ -120,7 +131,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "February 1", 
         salary: "$113-161K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://careers.google.com/jobs/results/?q=associate%20product%20manager"
       },
       { 
         name: "Microsoft", 
@@ -128,7 +140,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "February 15", 
         salary: "Competitive", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://careers.microsoft.com/us/en/search-results?keywords=associate%20product%20manager"
       },
       { 
         name: "Meta", 
@@ -136,7 +149,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "February 28", 
         salary: "Competitive", 
         status: "Open",
-        program: "RPM Program"
+        program: "RPM Program",
+        applicationUrl: "https://www.metacareers.com/jobs/?q=associate%20product%20manager"
       },
       { 
         name: "Figma", 
@@ -144,7 +158,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "March 31", 
         salary: "$140K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://www.figma.com/careers/#openings"
       },
       { 
         name: "Roblox", 
@@ -152,7 +167,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "March 31", 
         salary: "$142K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://careers.roblox.com/jobs?keywords=associate%20product%20manager"
       },
       { 
         name: "TikTok", 
@@ -160,7 +176,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "April 1", 
         salary: "$116-176K", 
         status: "Open",
-        program: "PM Program"
+        program: "PM Program",
+        applicationUrl: "https://careers.tiktok.com/position?keywords=product%20manager"
       },
       { 
         name: "Databricks", 
@@ -168,7 +185,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "April 15", 
         salary: "$133-150K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://www.databricks.com/company/careers/open-positions?keywords=associate%20product%20manager"
       },
       { 
         name: "IBM", 
@@ -176,7 +194,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "April 30", 
         salary: "$99-148K", 
         status: "Open",
-        program: "Entry Level PM"
+        program: "Entry Level PM",
+        applicationUrl: "https://www.ibm.com/careers/search?q=product%20manager"
       },
       { 
         name: "Duolingo", 
@@ -184,7 +203,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "May 1", 
         salary: "$125-135K", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://careers.duolingo.com/jobs?keywords=associate%20product%20manager"
       },
       { 
         name: "Arcade", 
@@ -192,7 +212,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         deadline: "May 15", 
         salary: "Competitive", 
         status: "Open",
-        program: "APM Program"
+        program: "APM Program",
+        applicationUrl: "https://jobs.lever.co/Arcade"
       }
     ]
   };
@@ -303,6 +324,18 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
                     <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
                       {company.status}
                     </span>
+                  </div>
+                  
+                  <div className="pt-3 border-t border-gray-100">
+                    <a
+                      href={company.applicationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Apply Now
+                    </a>
                   </div>
                 </div>
               </div>
