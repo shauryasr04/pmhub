@@ -21,7 +21,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 }) => {
   const [settings, setSettings] = useState<InterviewSettings>({
     category: 'all',
-    level: 'mid',
+    level: 'both',
     duration: 30
   });
 
@@ -37,10 +37,9 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   ];
 
   const levels = [
-    { value: 'junior', label: 'Junior PM' },
-    { value: 'mid', label: 'Mid-level PM' },
-    { value: 'senior', label: 'Senior PM' },
-    { value: 'all', label: 'Mixed Levels' }
+    { value: 'internship', label: 'PM Internship' },
+    { value: 'new-grad', label: 'New Grad PM' },
+    { value: 'both', label: 'Both Internship & New Grad' }
   ];
 
   const durations = [
@@ -135,7 +134,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             {/* Level Selection */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Experience Level
+                Position Type
               </label>
               <select
                 value={settings.level}
