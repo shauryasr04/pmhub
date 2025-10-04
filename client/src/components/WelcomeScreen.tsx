@@ -53,22 +53,71 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="max-w-4xl w-full">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center items-center mb-6">
-            <div className="bg-primary-600 p-4 rounded-full">
-              <Brain className="w-12 h-12 text-white" />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Navbar */}
+      <nav className="bg-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex items-center">
+              <div className="bg-primary-600 p-2 rounded-full mr-3">
+                <Brain className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-xl font-bold text-gray-900">PM Hub</span>
+            </div>
+            
+            {/* Navigation Links */}
+            <div className="flex space-x-8">
+              <button
+                onClick={onNavigateToInterviewPrep}
+                className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
+              >
+                <BookOpen className="w-4 h-4 mr-2" />
+                Interview Prep
+              </button>
+              <button
+                onClick={onNavigateToNetworking}
+                className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
+              >
+                <Users className="w-4 h-4 mr-2" />
+                Networking Guide
+              </button>
+              <button
+                onClick={onNavigateToTimelines}
+                className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
+              >
+                <Calendar className="w-4 h-4 mr-2" />
+                Recruiting Timelines
+              </button>
+              <button
+                onClick={onNavigateToInternships}
+                className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
+              >
+                <Briefcase className="w-4 h-4 mr-2" />
+                Job Opportunities
+              </button>
             </div>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Welcome to PM Hub
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Ready to start your PM interview practice? Configure your settings below and choose how you'd like to begin.
-          </p>
         </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="flex items-center justify-center p-4 pt-20">
+        <div className="max-w-4xl w-full">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="flex justify-center items-center mb-6">
+              <div className="bg-primary-600 p-4 rounded-full">
+                <Brain className="w-12 h-12 text-white" />
+              </div>
+            </div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Welcome to PM Hub
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Ready to start your PM interview practice? Configure your settings below and choose how you'd like to begin.
+            </p>
+          </div>
 
 
         {/* Settings */}
@@ -133,8 +182,8 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
             </div>
           </div>
 
-          {/* Navigation Buttons */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+          {/* Core Interview Buttons */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
             <button
               onClick={handleStart}
               className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
@@ -148,52 +197,21 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
               className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
             >
               <Target className="w-5 h-5 mr-2" />
-              Question Bank
-            </button>
-            
-            <button
-              onClick={onNavigateToInterviewPrep}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
-            >
-              <BookOpen className="w-5 h-5 mr-2" />
-              Interview Prep
-            </button>
-            
-            <button
-              onClick={onNavigateToNetworking}
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
-            >
-              <Users className="w-5 h-5 mr-2" />
-              Networking Guide
-            </button>
-            
-            <button
-              onClick={onNavigateToTimelines}
-              className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
-            >
-              <Calendar className="w-5 h-5 mr-2" />
-              Recruiting Timelines
-            </button>
-            
-            <button
-              onClick={onNavigateToInternships}
-              className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 flex items-center justify-center"
-            >
-              <Briefcase className="w-5 h-5 mr-2" />
-              Job Opportunities
+              Practice via a Question Bank
             </button>
           </div>
         </div>
 
-        {/* Instructions */}
-        <div className="mt-8 text-center text-gray-600">
-          <p className="mb-2">
-            <strong>Instructions:</strong> Make sure your microphone and camera are working and you're in a quiet environment.
-          </p>
-          <p>
-            You'll join a video call with an AI interviewer. The AI will ask questions and listen to your responses. 
-            You can pause, ask for clarification, or request follow-up questions just like a real video interview.
-          </p>
+          {/* Instructions */}
+          <div className="mt-8 text-center text-gray-600">
+            <p className="mb-2">
+              <strong>Instructions:</strong> Make sure your microphone and camera are working and you're in a quiet environment.
+            </p>
+            <p>
+              You'll join a video call with an AI interviewer. The AI will ask questions and listen to your responses. 
+              You can pause, ask for clarification, or request follow-up questions just like a real video interview.
+            </p>
+          </div>
         </div>
       </div>
     </div>
