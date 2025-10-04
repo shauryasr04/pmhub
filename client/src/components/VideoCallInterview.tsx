@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Mic, 
-  MicOff, 
+import {
+  Mic,
+  MicOff,
   Volume2,
   VolumeX,
-  Home, 
+  Home,
   Clock,
   Brain,
   Video,
@@ -190,7 +190,7 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       speakText(data.response);
     } catch (error) {
       console.error('Error starting conversation:', error);
-      if (error.message.includes('OpenAI API not configured')) {
+      if (error instanceof Error && error.message.includes('OpenAI API not configured')) {
         setError('OpenAI API key not configured. Please set OPENAI_API_KEY in the server .env file to enable AI features.');
       } else {
         setError('Failed to start interview. Please try again.');
@@ -234,7 +234,7 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       speakText(data.response);
     } catch (error) {
       console.error('Error processing voice input:', error);
-      if (error.message.includes('OpenAI API not configured')) {
+      if (error instanceof Error && error.message.includes('OpenAI API not configured')) {
         setError('OpenAI API key not configured. Please set OPENAI_API_KEY in the server .env file to enable AI features.');
       } else {
         setError('Failed to process your response. Please try again.');
