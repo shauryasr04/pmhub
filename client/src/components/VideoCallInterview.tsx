@@ -44,6 +44,8 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
   const [isAISpeaking, setIsAISpeaking] = useState(false);
   const [isVideoOn, setIsVideoOn] = useState(true);
   const [conversationHistory, setConversationHistory] = useState<Array<{role: string, content: string}>>([]);
+  const [isWaitingForUser, setIsWaitingForUser] = useState(false);
+  const [waitingTimer, setWaitingTimer] = useState<NodeJS.Timeout | null>(null);
 
   const speechSynthesis = useRef<SpeechSynthesisUtterance | null>(null);
 
@@ -69,8 +71,13 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       if (recognition && isRecording) {
         recognition.stop();
       }
+      
+      // Clear waiting timer
+      if (waitingTimer) {
+        clearTimeout(waitingTimer);
+      }
     };
-  }, [recognition, isRecording]);
+  }, [recognition, isRecording, waitingTimer]);
 
   // Initialize speech recognition
   useEffect(() => {
@@ -186,12 +193,16 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       // Auto-speak the welcome message
       await speakText(data.response);
       
-      // After AI finishes speaking, start recording for the first response
-      setTimeout(() => {
+      // Set waiting state and start 2-minute timer
+      setIsWaitingForUser(true);
+      const timer = setTimeout(() => {
+        // After 2 minutes, automatically start recording
         if (recognition && !isRecording && !isProcessing) {
           startRecording();
         }
-      }, 1000); // Wait 1 second after AI finishes speaking
+        setIsWaitingForUser(false);
+      }, 120000); // 2 minutes = 120,000 milliseconds
+      setWaitingTimer(timer);
     } catch (error) {
       console.error('Error starting conversation:', error);
       if (error instanceof Error && error.message.includes('OpenAI API not configured')) {
@@ -207,6 +218,12 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
   const handleVoiceInput = async (content: string) => {
     if (!content.trim() || isProcessing) return;
 
+    // Clear any existing waiting timer
+    if (waitingTimer) {
+      clearTimeout(waitingTimer);
+      setWaitingTimer(null);
+    }
+    setIsWaitingForUser(false);
     setIsProcessing(true);
 
     try {
@@ -237,12 +254,16 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       // Auto-speak the response
       await speakText(data.response);
       
-      // After AI finishes speaking, restart recording for the next response
-      setTimeout(() => {
+      // Set waiting state and start 2-minute timer
+      setIsWaitingForUser(true);
+      const timer = setTimeout(() => {
+        // After 2 minutes, automatically start recording
         if (recognition && !isRecording && !isProcessing) {
           startRecording();
         }
-      }, 1000); // Wait 1 second after AI finishes speaking
+        setIsWaitingForUser(false);
+      }, 120000); // 2 minutes = 120,000 milliseconds
+      setWaitingTimer(timer);
     } catch (error) {
       console.error('Error processing voice input:', error);
       if (error instanceof Error && error.message.includes('OpenAI API not configured')) {
@@ -257,6 +278,12 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
 
   const startRecording = () => {
     if (recognition && !isRecording && !isProcessing) {
+      // Clear any existing waiting timer
+      if (waitingTimer) {
+        clearTimeout(waitingTimer);
+        setWaitingTimer(null);
+      }
+      setIsWaitingForUser(false);
       setError(null);
       setIsRecording(true);
       recognition.start();
@@ -314,6 +341,13 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       setIsAISpeaking(false);
       setIsRecording(false);
       setIsListening(false);
+      setIsWaitingForUser(false);
+      
+      // Clear waiting timer
+      if (waitingTimer) {
+        clearTimeout(waitingTimer);
+        setWaitingTimer(null);
+      }
       
       // Clear the speech synthesis ref
       if (speechSynthesis.current) {
@@ -378,12 +412,17 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
                 {isProcessing && (
                   <div className="absolute -inset-2 rounded-full border-2 border-yellow-400 animate-spin"></div>
                 )}
+                
+                {/* Waiting indicator */}
+                {isWaitingForUser && (
+                  <div className="absolute -inset-3 rounded-full border-2 border-blue-400 animate-pulse"></div>
+                )}
               </div>
 
               {/* AI Name */}
               <div className="text-white text-xl font-semibold mb-2">AI Interviewer</div>
               <div className="text-gray-300 text-sm mb-4">
-                {isAISpeaking ? 'Speaking...' : isProcessing ? 'Thinking...' : 'Ready to listen'}
+                {isAISpeaking ? 'Speaking...' : isProcessing ? 'Thinking...' : isWaitingForUser ? 'Waiting for your response (2 min)...' : 'Ready to listen'}
               </div>
 
               {/* Selected Question from Question Bank */}
