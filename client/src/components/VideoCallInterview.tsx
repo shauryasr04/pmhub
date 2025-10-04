@@ -22,6 +22,7 @@ interface VideoCallInterviewProps {
     level: string;
     duration: number;
     startTime: Date;
+    selectedQuestion?: any;
   };
   onEndInterview: () => void;
   onResetInterview: () => void;
@@ -140,6 +141,20 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
   const startConversation = async () => {
     setIsProcessing(true);
     try {
+      let initialMessage;
+      let context;
+
+      if (session.selectedQuestion) {
+        // Use the selected question from the question bank
+        const question = session.selectedQuestion;
+        initialMessage = `Hi! I'm ready to practice this specific question: "${question.question}". This is a ${question.difficulty} ${question.type} question in the ${question.category} category. Please guide me through answering this question and provide feedback.`;
+        context = `PM Interview Practice - ${question.type} Question - ${question.category} - ${question.difficulty}`;
+      } else {
+        // Use the general interview flow
+        initialMessage = `Hi! I'm ready to start my ${session.level} level Product Management interview focusing on ${session.category}. Please begin with an introductory question.`;
+        context = `${session.category} - ${session.level} level PM interview`;
+      }
+
       const response = await fetch('/api/conversation', {
         method: 'POST',
         headers: {
@@ -149,10 +164,10 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
           messages: [
             {
               role: 'user',
-              content: `Hi! I'm ready to start my ${session.level} level Product Management interview focusing on ${session.category}. Please begin with an introductory question.`
+              content: initialMessage
             }
           ],
-          context: `${session.category} - ${session.level} level PM interview`,
+          context: context,
           sessionId: sessionId
         }),
       });
@@ -164,7 +179,7 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
       }
 
       setCurrentQuestion(data.response);
-      setConversationHistory([{role: 'user', content: `Hi! I'm ready to start my ${session.level} level Product Management interview focusing on ${session.category}. Please begin with an introductory question.`}, {role: 'assistant', content: data.response}]);
+      setConversationHistory([{role: 'user', content: initialMessage}, {role: 'assistant', content: data.response}]);
       
       // Auto-speak the welcome message
       speakText(data.response);
@@ -335,6 +350,32 @@ const VideoCallInterview: React.FC<VideoCallInterviewProps> = ({
               <div className="text-gray-300 text-sm mb-4">
                 {isAISpeaking ? 'Speaking...' : isProcessing ? 'Thinking...' : 'Ready to listen'}
               </div>
+
+              {/* Selected Question from Question Bank */}
+              {session.selectedQuestion && (
+                <div className="max-w-2xl mx-auto mb-4">
+                  <div className="bg-indigo-700/50 backdrop-blur-sm rounded-lg p-4 text-left border border-indigo-400/30">
+                    <div className="flex items-center mb-2">
+                      <Brain className="w-5 h-5 text-indigo-300 mr-2" />
+                      <span className="text-indigo-200 text-sm font-medium">Practice Question</span>
+                    </div>
+                    <p className="text-white text-base leading-relaxed mb-2">
+                      {session.selectedQuestion.question}
+                    </p>
+                    <div className="flex items-center space-x-4 text-xs text-indigo-300">
+                      <span className="px-2 py-1 bg-indigo-600/50 rounded">
+                        {session.selectedQuestion.difficulty}
+                      </span>
+                      <span className="px-2 py-1 bg-indigo-600/50 rounded">
+                        {session.selectedQuestion.type}
+                      </span>
+                      <span className="px-2 py-1 bg-indigo-600/50 rounded">
+                        {session.selectedQuestion.category}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Current Question */}
               {currentQuestion && (

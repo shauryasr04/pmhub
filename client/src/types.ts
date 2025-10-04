@@ -10,6 +10,7 @@ export interface InterviewSession {
   currentQuestionIndex: number;
   isActive: boolean;
   score: number;
+  selectedQuestion?: any; // Question from question bank
 }
 
 export interface Question {

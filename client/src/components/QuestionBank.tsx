@@ -31,9 +31,10 @@ interface Question {
 interface QuestionBankProps {
   onBack?: () => void;
   onSelectQuestion: (question: Question) => void;
+  onStartInterview: (settings: { category: string; level: string; duration: number; question: Question }) => void;
 }
 
-const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion }) => {
+const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, onStartInterview }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
@@ -452,7 +453,15 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion })
                           <span>💡 {question.tips.length} tips provided</span>
                           {question.exampleAnswer && <span>📝 Example answer included</span>}
                         </div>
-                        <button className="flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                        <button 
+                          onClick={() => onStartInterview({
+                            category: question.category,
+                            level: question.difficulty.toLowerCase(),
+                            duration: question.estimatedTime,
+                            question: question
+                          })}
+                          className="flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                        >
                           <Play className="w-4 h-4 mr-2" />
                           Practice Now
                         </button>

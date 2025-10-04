@@ -6,18 +6,18 @@ import InterviewPrepGuide from './components/InterviewPrepGuide';
 import NetworkingGuide from './components/NetworkingGuide';
 import RecruitingTimelines from './components/RecruitingTimelines';
 import QuestionBank from './components/QuestionBank';
-import QuestionSpecificInterview from './components/QuestionSpecificInterview';
 import { InterviewSession } from './types';
 
 function App() {
   const [session, setSession] = useState<InterviewSession | null>(null);
-  const [currentPage, setCurrentPage] = useState<'home' | 'interview' | 'internships' | 'interview-prep' | 'networking' | 'timelines' | 'question-bank' | 'question-interview'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'interview' | 'internships' | 'interview-prep' | 'networking' | 'timelines' | 'question-bank'>('home');
   const [selectedQuestion, setSelectedQuestion] = useState<any>(null);
 
   const startInterview = (settings: {
     category: string;
     level: string;
     duration: number;
+    question?: any;
   }) => {
     setSession({
       id: Date.now().toString(),
@@ -29,7 +29,8 @@ function App() {
       answers: [],
       currentQuestionIndex: 0,
       isActive: true,
-      score: 0
+      score: 0,
+      selectedQuestion: settings.question
     });
     setCurrentPage('interview');
   };
@@ -52,17 +53,7 @@ function App() {
 
   const handleQuestionSelect = (question: any) => {
     setSelectedQuestion(question);
-    setCurrentPage('question-interview');
-  };
-
-  const handleBackToQuestions = () => {
-    setSelectedQuestion(null);
-    setCurrentPage('question-bank');
-  };
-
-  const handleEndQuestionInterview = () => {
-    setSelectedQuestion(null);
-    setCurrentPage('home');
+    // This will be handled by the onStartInterview callback
   };
 
   return (
@@ -79,12 +70,7 @@ function App() {
         <QuestionBank 
           onBack={() => setCurrentPage('home')} 
           onSelectQuestion={handleQuestionSelect}
-        />
-      ) : currentPage === 'question-interview' ? (
-        <QuestionSpecificInterview
-          question={selectedQuestion}
-          onBack={handleBackToQuestions}
-          onEndInterview={handleEndQuestionInterview}
+          onStartInterview={startInterview}
         />
       ) : !session ? (
         <WelcomeScreen 
