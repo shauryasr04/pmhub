@@ -36,6 +36,7 @@ interface InternshipsPageProps {
   onNavigateToNetworking: () => void;
   onNavigateToTimelines: () => void;
   onNavigateToInternships: () => void;
+  onNavigateToHome: () => void;
 }
 
 const InternshipsPage: React.FC<InternshipsPageProps> = ({ 
@@ -43,7 +44,8 @@ const InternshipsPage: React.FC<InternshipsPageProps> = ({
   onNavigateToInterviewPrep, 
   onNavigateToNetworking, 
   onNavigateToTimelines, 
-  onNavigateToInternships 
+  onNavigateToInternships,
+  onNavigateToHome
 }) => {
   const [internships, setInternships] = useState<Internship[]>([]);
   const [filteredInternships, setFilteredInternships] = useState<Internship[]>([]);
@@ -341,6 +343,7 @@ const InternshipsPage: React.FC<InternshipsPageProps> = ({
         onNavigateToNetworking={onNavigateToNetworking}
         onNavigateToTimelines={onNavigateToTimelines}
         onNavigateToInternships={onNavigateToInternships}
+        onNavigateToHome={onNavigateToHome}
         currentPage="internships"
       />
       

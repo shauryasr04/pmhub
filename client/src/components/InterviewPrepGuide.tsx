@@ -21,6 +21,7 @@ interface InterviewPrepGuideProps {
   onNavigateToNetworking: () => void;
   onNavigateToTimelines: () => void;
   onNavigateToInternships: () => void;
+  onNavigateToHome: () => void;
 }
 
 const InterviewPrepGuide: React.FC<InterviewPrepGuideProps> = ({ 
@@ -28,7 +29,8 @@ const InterviewPrepGuide: React.FC<InterviewPrepGuideProps> = ({
   onNavigateToInterviewPrep, 
   onNavigateToNetworking, 
   onNavigateToTimelines, 
-  onNavigateToInternships 
+  onNavigateToInternships,
+  onNavigateToHome
 }) => {
   const [activeTab, setActiveTab] = useState<'internship' | 'newgrad'>('internship');
 
@@ -122,6 +124,7 @@ const InterviewPrepGuide: React.FC<InterviewPrepGuideProps> = ({
         onNavigateToNetworking={onNavigateToNetworking}
         onNavigateToTimelines={onNavigateToTimelines}
         onNavigateToInternships={onNavigateToInternships}
+        onNavigateToHome={onNavigateToHome}
         currentPage="interview-prep"
       />
       

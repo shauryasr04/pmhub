@@ -21,6 +21,7 @@ interface RecruitingTimelinesProps {
   onNavigateToNetworking: () => void;
   onNavigateToTimelines: () => void;
   onNavigateToInternships: () => void;
+  onNavigateToHome: () => void;
 }
 
 const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({ 
@@ -28,7 +29,8 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
   onNavigateToInterviewPrep, 
   onNavigateToNetworking, 
   onNavigateToTimelines, 
-  onNavigateToInternships 
+  onNavigateToInternships,
+  onNavigateToHome
 }) => {
   const [activeTab, setActiveTab] = useState<'internship' | 'newgrad'>('internship');
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -268,6 +270,7 @@ const RecruitingTimelines: React.FC<RecruitingTimelinesProps> = ({
         onNavigateToNetworking={onNavigateToNetworking}
         onNavigateToTimelines={onNavigateToTimelines}
         onNavigateToInternships={onNavigateToInternships}
+        onNavigateToHome={onNavigateToHome}
         currentPage="timelines"
       />
       

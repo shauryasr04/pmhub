@@ -75,6 +75,7 @@ function App() {
           onNavigateToNetworking={() => setCurrentPage('networking')}
           onNavigateToTimelines={() => setCurrentPage('timelines')}
           onNavigateToInternships={() => setCurrentPage('internships')}
+          onNavigateToHome={() => setCurrentPage('home')}
         />
       ) : currentPage === 'interview-prep' ? (
         <InterviewPrepGuide 
@@ -83,6 +84,7 @@ function App() {
           onNavigateToNetworking={() => setCurrentPage('networking')}
           onNavigateToTimelines={() => setCurrentPage('timelines')}
           onNavigateToInternships={() => setCurrentPage('internships')}
+          onNavigateToHome={() => setCurrentPage('home')}
         />
       ) : currentPage === 'networking' ? (
             <NetworkingGuide 
@@ -91,6 +93,7 @@ function App() {
               onNavigateToNetworking={() => setCurrentPage('networking')}
               onNavigateToTimelines={() => setCurrentPage('timelines')}
               onNavigateToInternships={() => setCurrentPage('internships')}
+              onNavigateToHome={() => setCurrentPage('home')}
             />
           ) : currentPage === 'timelines' ? (
             <RecruitingTimelines 
@@ -99,6 +102,7 @@ function App() {
               onNavigateToNetworking={() => setCurrentPage('networking')}
               onNavigateToTimelines={() => setCurrentPage('timelines')}
               onNavigateToInternships={() => setCurrentPage('internships')}
+              onNavigateToHome={() => setCurrentPage('home')}
             />
           ) : currentPage === 'question-bank' ? (
             <QuestionBank 
@@ -109,6 +113,7 @@ function App() {
               onNavigateToNetworking={() => setCurrentPage('networking')}
               onNavigateToTimelines={() => setCurrentPage('timelines')}
               onNavigateToInternships={() => setCurrentPage('internships')}
+              onNavigateToHome={() => setCurrentPage('home')}
             />
           ) : !session ? (
             <WelcomeScreen 

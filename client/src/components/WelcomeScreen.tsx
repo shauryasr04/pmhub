@@ -61,6 +61,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         onNavigateToNetworking={onNavigateToNetworking}
         onNavigateToTimelines={onNavigateToTimelines}
         onNavigateToInternships={onNavigateToInternships}
+        onNavigateToHome={() => {}} // Already on home page
         currentPage="home"
       />
 
