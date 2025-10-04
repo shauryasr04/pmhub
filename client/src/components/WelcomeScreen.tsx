@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Brain, Clock, Play, Briefcase, BookOpen, Users, Calendar, Target } from 'lucide-react';
+import { Brain, Clock, Play, Target } from 'lucide-react';
 import { InterviewSettings } from '../types';
+import Navbar from './Navbar';
 
 interface WelcomeScreenProps {
   onStartInterview: (settings: InterviewSettings) => void;
@@ -55,51 +56,13 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Navbar */}
-      <nav className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <div className="bg-primary-600 p-2 rounded-full mr-3">
-                <Brain className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold text-gray-900">PM Hub</span>
-            </div>
-            
-            {/* Navigation Links */}
-            <div className="flex space-x-8">
-              <button
-                onClick={onNavigateToInterviewPrep}
-                className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
-              >
-                <BookOpen className="w-4 h-4 mr-2" />
-                Interview Prep
-              </button>
-              <button
-                onClick={onNavigateToNetworking}
-                className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
-              >
-                <Users className="w-4 h-4 mr-2" />
-                Networking Guide
-              </button>
-              <button
-                onClick={onNavigateToTimelines}
-                className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
-              >
-                <Calendar className="w-4 h-4 mr-2" />
-                Recruiting Timelines
-              </button>
-              <button
-                onClick={onNavigateToInternships}
-                className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
-              >
-                <Briefcase className="w-4 h-4 mr-2" />
-                Job Opportunities
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar
+        onNavigateToInterviewPrep={onNavigateToInterviewPrep}
+        onNavigateToNetworking={onNavigateToNetworking}
+        onNavigateToTimelines={onNavigateToTimelines}
+        onNavigateToInternships={onNavigateToInternships}
+        currentPage="home"
+      />
 
       {/* Main Content */}
       <div className="flex items-center justify-center p-4 pt-20">

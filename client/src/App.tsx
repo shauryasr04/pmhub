@@ -68,11 +68,23 @@ function App() {
         <LandingPage onEnterApp={enterApp} />
       ) : (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-          {currentPage === 'internships' ? (
-            <InternshipsPage onBack={() => setCurrentPage('home')} />
-          ) : currentPage === 'interview-prep' ? (
-            <InterviewPrepGuide onBack={() => setCurrentPage('home')} />
-          ) : currentPage === 'networking' ? (
+      {currentPage === 'internships' ? (
+        <InternshipsPage 
+          onBack={() => setCurrentPage('home')} 
+          onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
+          onNavigateToNetworking={() => setCurrentPage('networking')}
+          onNavigateToTimelines={() => setCurrentPage('timelines')}
+          onNavigateToInternships={() => setCurrentPage('internships')}
+        />
+      ) : currentPage === 'interview-prep' ? (
+        <InterviewPrepGuide 
+          onBack={() => setCurrentPage('home')} 
+          onNavigateToInterviewPrep={() => setCurrentPage('interview-prep')}
+          onNavigateToNetworking={() => setCurrentPage('networking')}
+          onNavigateToTimelines={() => setCurrentPage('timelines')}
+          onNavigateToInternships={() => setCurrentPage('internships')}
+        />
+      ) : currentPage === 'networking' ? (
             <NetworkingGuide onBack={() => setCurrentPage('home')} />
           ) : currentPage === 'timelines' ? (
             <RecruitingTimelines onBack={() => setCurrentPage('home')} />
@@ -93,10 +105,10 @@ function App() {
             />
           ) : (
             <VideoCallInterview
-              session={session}
-              onEndInterview={endInterview}
-              onResetInterview={resetInterview}
-            />
+          session={session}
+          onEndInterview={endInterview}
+          onResetInterview={resetInterview}
+        />
           )}
         </div>
       )}

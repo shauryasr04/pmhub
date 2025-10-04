@@ -13,12 +13,23 @@ import {
   TrendingUp,
   Award
 } from 'lucide-react';
+import Navbar from './Navbar';
 
 interface InterviewPrepGuideProps {
   onBack?: () => void;
+  onNavigateToInterviewPrep: () => void;
+  onNavigateToNetworking: () => void;
+  onNavigateToTimelines: () => void;
+  onNavigateToInternships: () => void;
 }
 
-const InterviewPrepGuide: React.FC<InterviewPrepGuideProps> = ({ onBack }) => {
+const InterviewPrepGuide: React.FC<InterviewPrepGuideProps> = ({ 
+  onBack, 
+  onNavigateToInterviewPrep, 
+  onNavigateToNetworking, 
+  onNavigateToTimelines, 
+  onNavigateToInternships 
+}) => {
   const [activeTab, setActiveTab] = useState<'internship' | 'newgrad'>('internship');
 
   const internshipPrep = {
@@ -105,6 +116,15 @@ const InterviewPrepGuide: React.FC<InterviewPrepGuideProps> = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Navbar */}
+      <Navbar
+        onNavigateToInterviewPrep={onNavigateToInterviewPrep}
+        onNavigateToNetworking={onNavigateToNetworking}
+        onNavigateToTimelines={onNavigateToTimelines}
+        onNavigateToInternships={onNavigateToInternships}
+        currentPage="interview-prep"
+      />
+      
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

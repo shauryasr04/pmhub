@@ -12,6 +12,7 @@ import {
   Clock,
   ArrowLeft
 } from 'lucide-react';
+import Navbar from './Navbar';
 
 interface Internship {
   id: string;
@@ -31,9 +32,19 @@ interface Internship {
 
 interface InternshipsPageProps {
   onBack?: () => void;
+  onNavigateToInterviewPrep: () => void;
+  onNavigateToNetworking: () => void;
+  onNavigateToTimelines: () => void;
+  onNavigateToInternships: () => void;
 }
 
-const InternshipsPage: React.FC<InternshipsPageProps> = ({ onBack }) => {
+const InternshipsPage: React.FC<InternshipsPageProps> = ({ 
+  onBack, 
+  onNavigateToInterviewPrep, 
+  onNavigateToNetworking, 
+  onNavigateToTimelines, 
+  onNavigateToInternships 
+}) => {
   const [internships, setInternships] = useState<Internship[]>([]);
   const [filteredInternships, setFilteredInternships] = useState<Internship[]>([]);
   const [loading, setLoading] = useState(true);
@@ -324,6 +335,15 @@ const InternshipsPage: React.FC<InternshipsPageProps> = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Navbar */}
+      <Navbar
+        onNavigateToInterviewPrep={onNavigateToInterviewPrep}
+        onNavigateToNetworking={onNavigateToNetworking}
+        onNavigateToTimelines={onNavigateToTimelines}
+        onNavigateToInternships={onNavigateToInternships}
+        currentPage="internships"
+      />
+      
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
