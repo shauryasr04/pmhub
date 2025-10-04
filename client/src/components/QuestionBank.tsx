@@ -26,6 +26,7 @@ interface Question {
   tips: string[];
   framework?: string;
   exampleAnswer?: string;
+  company: string;
 }
 
 interface QuestionBankProps {
@@ -42,6 +43,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState('all');
   const [selectedType, setSelectedType] = useState('all');
+  const [selectedCompany, setSelectedCompany] = useState('all');
 
   // Mock question data - in production, this would come from an API
   const mockQuestions: Question[] = [
@@ -61,7 +63,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Quantify the impact when possible'
       ],
       framework: 'STAR Method',
-      exampleAnswer: 'Situation: I needed to convince engineering to prioritize a user research feature...'
+      exampleAnswer: 'Situation: I needed to convince engineering to prioritize a user research feature...',
+      company: 'Google'
     },
     {
       id: '2',
@@ -77,7 +80,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Explain how you communicated the decision',
         'Highlight the outcome and learnings'
       ],
-      framework: 'STAR Method'
+      framework: 'STAR Method',
+      company: 'Microsoft'
     },
     // Product Design Questions
     {
@@ -96,7 +100,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Consider technical constraints and feasibility'
       ],
       framework: 'Product Design Framework',
-      exampleAnswer: 'First, I\'d like to understand the current engagement metrics and what specific behaviors we want to encourage...'
+      exampleAnswer: 'First, I\'d like to understand the current engagement metrics and what specific behaviors we want to encourage...',
+      company: 'Meta'
     },
     {
       id: '4',
@@ -112,7 +117,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Consider different user personas',
         'Think about both short-term and long-term solutions'
       ],
-      framework: 'User Journey Mapping'
+      framework: 'User Journey Mapping',
+      company: 'Uber'
     },
     // Case Study Questions
     {
@@ -130,7 +136,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Think about content acquisition and creator relationships',
         'Plan for technical and operational challenges'
       ],
-      framework: 'Market Analysis Framework'
+      framework: 'Market Analysis Framework',
+      company: 'Spotify'
     },
     {
       id: '6',
@@ -147,7 +154,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Propose specific features or changes',
         'Consider viral growth mechanisms'
       ],
-      framework: 'Growth Framework'
+      framework: 'Growth Framework',
+      company: 'TikTok'
     },
     // Technical Questions
     {
@@ -165,7 +173,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Design the data model and API',
         'Consider real-time vs batch processing'
       ],
-      framework: 'System Design Principles'
+      framework: 'System Design Principles',
+      company: 'WhatsApp'
     },
     {
       id: '8',
@@ -182,7 +191,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Consider long-term vs short-term metrics',
         'Plan for data collection and analysis'
       ],
-      framework: 'Metrics Framework'
+      framework: 'Metrics Framework',
+      company: 'Netflix'
     },
     // Strategy Questions
     {
@@ -200,7 +210,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Define clear success metrics',
         'Balance ambition with feasibility'
       ],
-      framework: 'Vision Framework'
+      framework: 'Vision Framework',
+      company: 'Notion'
     },
     {
       id: '10',
@@ -217,7 +228,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
         'Consider value-based pricing',
         'Plan for pricing experiments'
       ],
-      framework: 'Pricing Strategy Framework'
+      framework: 'Pricing Strategy Framework',
+      company: 'Slack'
     }
   ];
 
@@ -228,6 +240,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
 
   const difficulties = ['Easy', 'Medium', 'Hard'];
   const types = ['Behavioral', 'Product Design', 'Case Study', 'Technical', 'Strategy'];
+  const companies = ['Google', 'Microsoft', 'Meta', 'Uber', 'Spotify', 'TikTok', 'WhatsApp', 'Netflix', 'Notion', 'Slack'];
 
   // Load questions
   useEffect(() => {
@@ -257,7 +270,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
       filtered = filtered.filter(q =>
         q.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
         q.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        q.subcategory.toLowerCase().includes(searchTerm.toLowerCase())
+        q.subcategory.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        q.company.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
@@ -276,8 +290,13 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
       filtered = filtered.filter(q => q.type === selectedType);
     }
 
+    // Company filter
+    if (selectedCompany !== 'all') {
+      filtered = filtered.filter(q => q.company === selectedCompany);
+    }
+
     setFilteredQuestions(filtered);
-  }, [questions, searchTerm, selectedCategory, selectedDifficulty, selectedType]);
+  }, [questions, searchTerm, selectedCategory, selectedDifficulty, selectedType, selectedCompany]);
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -338,14 +357,14 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
       {/* Filters */}
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {/* Search */}
-            <div className="md:col-span-2">
+            <div className="lg:col-span-2">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <input
                   type="text"
-                  placeholder="Search questions, categories, or topics..."
+                  placeholder="Search questions, categories, or companies..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -377,6 +396,20 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
                 <option value="all">All Difficulties</option>
                 {difficulties.map(difficulty => (
                   <option key={difficulty} value={difficulty}>{difficulty}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Company Filter */}
+            <div>
+              <select
+                value={selectedCompany}
+                onChange={(e) => setSelectedCompany(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="all">All Companies</option>
+                {companies.map(company => (
+                  <option key={company} value={company}>{company}</option>
                 ))}
               </select>
             </div>
@@ -423,6 +456,9 @@ const QuestionBank: React.FC<QuestionBankProps> = ({ onBack, onSelectQuestion, o
                           </span>
                           <span className={`px-2 py-1 text-xs font-medium rounded-full ${getTypeColor(question.type)}`}>
                             {question.type}
+                          </span>
+                          <span className="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800">
+                            {question.company}
                           </span>
                         </div>
                       </div>
